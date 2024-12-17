@@ -1,7 +1,7 @@
 part of './splsah_page.dart';
 
 class _Logo extends StatefulWidget {
-  const _Logo({super.key});
+  const _Logo();
 
   @override
   State<_Logo> createState() => _LogoState();
@@ -21,9 +21,9 @@ class _LogoState extends State<_Logo> with TickerProviderStateMixin {
     super.initState();
       _controller.forward();
     Timer(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (builder) => HomePage()),
+          MaterialPageRoute(builder: (builder) => const HomePage()),
           (predicate) => false),
     );
   }
