@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:safe_driving/design_system/icons.dart';
 import 'package:safe_driving/views/home/home_page.dart';
+import 'package:safe_driving/views/login/login_page.dart';
 
 part './splash_logo.dart';
 part './splash_scaffold.dart';
