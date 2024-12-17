@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:safe_driving/design_system/icons.dart';
 import 'package:safe_driving/views/home/home_page.dart';
 
 part './splash_logo.dart';
