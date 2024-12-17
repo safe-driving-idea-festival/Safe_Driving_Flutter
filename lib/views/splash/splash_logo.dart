@@ -19,11 +19,19 @@ class _LogoState extends State<_Logo> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-      _controller.forward();
+    _controller.forward();
     Timer(
       const Duration(seconds: 2),
       () => Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (builder) => const HomePage()),
+          PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return const LoginPage();
+              },
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+              transitionDuration: Duration(milliseconds: 200)),
           (predicate) => false),
     );
   }
