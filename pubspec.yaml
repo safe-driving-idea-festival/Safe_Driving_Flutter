@@ -86,15 +86,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-
-  fonts:
-    - family: S-Core Dream
-      fonts:
-        - asset: assets/fonts/SCDream4.otf
-          weight: 200
-        - asset: assets/fonts/SCDream5.otf
-          weight: 500
-        - asset: assets/fonts/SCDream6.otf
-          weight: 600
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
