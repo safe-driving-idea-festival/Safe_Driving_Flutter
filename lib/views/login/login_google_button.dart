@@ -17,7 +17,10 @@ class _GoogleLoginButton extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () {},
+              onTap: () => Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (builder) => const MainPage()),
+                (_) => false,
+              ),
             ),
           ),
         )

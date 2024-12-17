@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safe_driving/design_system/icons.dart';
+import 'package:safe_driving/views/main/main_page.dart';
 
 part './login_scaffold.dart';
 part './login_google_button.dart';
