@@ -44,11 +44,7 @@ class _LogoState extends State<_Logo> with TickerProviderStateMixin {
         offset: Offset(_curvedAnimation.value * 60 - 60, 0),
         child: Opacity(
           opacity: _controller.value,
-          child: SvgPicture.asset(
-            'assets/icons/logo.svg',
-            width: 208,
-            height: 67,
-          ),
+          child: AppIcon.logo,
         ),
       ),
     );
