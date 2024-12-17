@@ -46,4 +46,5 @@ class AppIcon{
   static SvgPicture group = SvgPicture.asset('assets/icons/group.svg', width: width, height: height,);
   static SvgPicture seat = SvgPicture.asset('assets/icons/seat.svg', width: width, height: height,);
   static SvgPicture logo = SvgPicture.asset('assets/images/logo.svg', width: 208, height: 67,);
+  static SvgPicture googleLogin = SvgPicture.asset('assets/images/google login.svg', width: 343, height: 48,);
 }
