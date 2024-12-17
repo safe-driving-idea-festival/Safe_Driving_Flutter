@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safe_driving/design_system/colors.dart';
 import 'package:safe_driving/design_system/icons.dart';
 
 part './login_scaffold.dart';
-
 part './login_google_button.dart';
 
 class LoginPage extends StatelessWidget {

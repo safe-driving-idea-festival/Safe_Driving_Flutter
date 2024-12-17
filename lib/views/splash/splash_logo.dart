@@ -31,7 +31,7 @@ class _LogoState extends State<_Logo> with TickerProviderStateMixin {
                   (context, animation, secondaryAnimation, child) {
                 return FadeTransition(opacity: animation, child: child);
               },
-              transitionDuration: Duration(milliseconds: 200)),
+              transitionDuration: const Duration(milliseconds: 200)),
           (predicate) => false),
     );
   }

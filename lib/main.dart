@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColor.white,
       ),
       darkTheme: ThemeData.dark(),
-      home: SplashPage(),
+      home: const SplashPage(),
     );
   }
 }
