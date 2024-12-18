@@ -11,7 +11,7 @@ class MainBottomNavigationBarViewModel extends ChangeNotifier {
     _currentIndex = index;
     _pageController.animateToPage(
       _currentIndex,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
     notifyListeners();

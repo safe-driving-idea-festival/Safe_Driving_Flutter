@@ -7,7 +7,7 @@ import '../../core/utils/fonts.dart';
 import '../../core/utils/icons.dart';
 
 class DrivingInfo extends StatelessWidget {
-  DrivingInfo({super.key});
+  const DrivingInfo({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 part of 'home_page.dart';
 
 class _StartButton extends StatelessWidget {
-  const _StartButton({super.key});
+  const _StartButton();
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +9,9 @@ class _StartButton extends StatelessWidget {
       onTap: () {
         showDialog(
           context: context,
-          builder: (BuildContext context) => BluetoothConnectModal(),
+          builder: (BuildContext context) => const BluetoothConnectModal(),
         );
-        Timer(Duration(seconds: 10),
+        Timer(const Duration(seconds: 10),
             () => context.read<BluetoothViewModel>().bluetoothConnect());
       },
       height: 70,
