@@ -10,7 +10,7 @@ class AppIcon {
       path,
       width: width,
       height: height,
-      color: color,
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
     );
   }
 
