@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safe_driving/design_system/colors.dart';
-import 'package:safe_driving/views/splash/splsah_page.dart';
+import 'package:safe_driving/presentation/views/splash/splsah_page.dart';
+
+import 'core/utils/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColor.white,
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+        bottomNavigationBarTheme:
+            const BottomNavigationBarThemeData(backgroundColor: Colors.white),
       ),
       darkTheme: ThemeData.dark(),
       home: const SplashPage(),
