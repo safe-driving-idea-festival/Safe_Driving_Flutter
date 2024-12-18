@@ -1,4 +1,4 @@
-part of './splsah_page.dart';
+part of 'splsah_page.dart';
 
 class _Scaffold extends StatelessWidget {
   const _Scaffold({

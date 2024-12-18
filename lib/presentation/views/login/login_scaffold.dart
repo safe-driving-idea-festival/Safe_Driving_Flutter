@@ -1,4 +1,4 @@
-part of './login_page.dart';
+part of 'login_page.dart';
 
 class _Scaffold extends StatelessWidget {
   const _Scaffold({
@@ -13,7 +13,7 @@ class _Scaffold extends StatelessWidget {
       body: Stack(
         children: [
           Center(
-            child: AppIcon.logo,
+            child: AppIcon.logo(),
           ),
           Positioned(
             left: 0,

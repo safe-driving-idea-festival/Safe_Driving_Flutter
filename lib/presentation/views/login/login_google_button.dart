@@ -1,4 +1,4 @@
-part of './login_page.dart';
+part of 'login_page.dart';
 
 class _GoogleLoginButton extends StatelessWidget {
   const _GoogleLoginButton();
@@ -9,7 +9,7 @@ class _GoogleLoginButton extends StatelessWidget {
       alignment: Alignment.center,
       clipBehavior: Clip.none,
       children: [
-        AppIcon.googleLogin,
+        AppIcon.googleLogin(),
         Container(
           decoration: const BoxDecoration(),
           width: 343,
