@@ -11,9 +11,16 @@ class _Scaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [],
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          spacing: 37,
+          children: [
+            drivingInfo,
+            button,
+          ],
+        ),
       ),
     );
   }
