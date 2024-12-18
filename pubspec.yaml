@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.16
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -110,5 +111,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/SCDream6.otf
           weight: 600
+    - family: PyeongChang
+      fonts:
+        - asset: assets/fonts/PyeongChang-Regular.otf
+          weight: 400
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
