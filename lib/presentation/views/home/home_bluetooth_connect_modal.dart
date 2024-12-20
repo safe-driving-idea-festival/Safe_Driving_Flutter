@@ -1,26 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:safe_driving/core/utils/colors.dart';
-import 'package:safe_driving/core/utils/fonts.dart';
-import 'package:safe_driving/core/utils/icons.dart';
-import 'package:safe_driving/presentation/viewmodels/main/bluetooth_view_model.dart';
-import 'package:safe_driving/presentation/views/dirving/driving_page.dart';
-import 'package:safe_driving/presentation/widgets/button_components.dart';
+part of 'home_page.dart';
 
-class BluetoothConnectModal extends StatelessWidget {
-  const BluetoothConnectModal({super.key});
+class _HomeBluetoothConnectModal extends StatelessWidget {
+  const _HomeBluetoothConnectModal();
 
   @override
   Widget build(BuildContext context) {
-    void navigator() {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (builder) => const DrivingPage(),
-        ),
-      );
+    void navigator() async {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (builder) => const DrivingPage(),
+          ),
+          (_) => false);
+      context.read<DrivingViewModel>().drivingOn();
+      context.read<AbnormalBehaviorViewModel>().removeAbnormalBehaviorState();
+      await context.read<LocationViewModel>().initializeLocation();
     }
 
-    return Consumer<BluetoothViewModel>(
+    return Consumer<DrivingViewModel>(
       builder: (context, value, child) => Dialog(
         backgroundColor: Colors.transparent,
         child: Container(
@@ -45,14 +41,18 @@ class BluetoothConnectModal extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     width: 2,
-                    color: value.bluetooth ? AppColor.main : AppColor.gray700,
+                    color: value.drivingState == DrivingState.off
+                        ? AppColor.main
+                        : AppColor.gray700,
                   ),
                 ),
-                child: AppIcon.bluetoothSearching(
-                  color: value.bluetooth ? AppColor.main : AppColor.gray700,
-                ),
+                child: value.drivingState == DrivingState.off
+                    ? AppIcon.bluetooth(color: AppColor.main)
+                    : AppIcon.bluetoothSearching(
+                        color: AppColor.gray700,
+                      ),
               ),
-              value.bluetooth
+              value.drivingState == DrivingState.off
                   ? Column(
                       spacing: 7,
                       children: [
@@ -87,10 +87,14 @@ class BluetoothConnectModal extends StatelessWidget {
                 spacing: 8,
                 children: [
                   ButtonComponent(
-                    onTap: value.bluetooth ? navigator : () {},
+                    onTap: value.drivingState == DrivingState.off
+                        ? navigator
+                        : () {},
                     width: 255,
                     height: 46,
-                    color: value.bluetooth ? AppColor.main : AppColor.gray300,
+                    color: value.drivingState == DrivingState.off
+                        ? AppColor.main
+                        : AppColor.gray300,
                     child: Text(
                       '확인',
                       style: AppTypography.body1R.copyWith(

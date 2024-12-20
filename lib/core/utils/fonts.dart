@@ -15,7 +15,7 @@ class AppTypography {
   );
   static const title2B = TextStyle(
     fontSize: 24,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     fontFamily: _fontFamily,
   );
   static const title2R = TextStyle(

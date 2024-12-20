@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.16
   provider: ^6.1.2
+  geolocator: ^13.0.2
+  google_sign_in: ^6.2.2
 
 dev_dependencies:
   flutter_test:

@@ -22,7 +22,8 @@ class _Scaffold extends StatelessWidget {
       body: PageView(
         controller:
             context.read<MainBottomNavigationBarViewModel>().pageController,
-        onPageChanged: (index)=> context.read<MainBottomNavigationBarViewModel>().setIndex(index),
+        onPageChanged: (index) =>
+            context.read<MainBottomNavigationBarViewModel>().setIndex(index),
         children: body,
       ),
       bottomNavigationBar: bottomNavigationBar,

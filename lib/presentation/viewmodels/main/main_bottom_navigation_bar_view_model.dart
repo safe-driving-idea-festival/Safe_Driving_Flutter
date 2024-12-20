@@ -5,10 +5,12 @@ class MainBottomNavigationBarViewModel extends ChangeNotifier {
   final PageController _pageController = PageController();
 
   int get currentIndex => _currentIndex;
+
   PageController get pageController => _pageController;
 
   void setIndex(int index) {
     _currentIndex = index;
+    notifyListeners();
     _pageController.animateToPage(
       _currentIndex,
       duration: const Duration(milliseconds: 300),

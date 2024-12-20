@@ -19,6 +19,9 @@ class ButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: const BorderRadius.all(
+        Radius.circular(4),
+      ),
       color: color,
       child: InkWell(
         onTap: onTap,
