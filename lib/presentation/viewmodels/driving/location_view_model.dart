@@ -17,34 +17,31 @@ class LocationViewModel extends ChangeNotifier {
   double get totalDistance => _totalDistance;
 
   Future<void> initializeLocation() async {
-    try {
-      _startPosition = await _locationRepository.getCurrentPosition();
-      _trackDistance();
-    } catch (e) {
-      print('Error initializing location: $e');
-    }
+    _startPosition = await _locationRepository.getCurrentPosition();
+    _trackDistance();
     notifyListeners();
   }
 
   void _trackDistance() {
-    _positionStreamSubscription =
-        _locationRepository.getPositionStream(distanceFilter: 10).listen((position) {
-          if (_startPosition == null) {
-            _startPosition = position;
-          } else {
-            double distance = Geolocator.distanceBetween(
-              _currentPosition?.latitude ?? _startPosition!.latitude,
-              _currentPosition?.longitude ?? _startPosition!.longitude,
-              position.latitude,
-              position.longitude,
-            );
-            if (distance >= 10) {
-              _totalDistance += distance / 1000;
-              _currentPosition = position;
-              notifyListeners();
-            }
-          }
-        });
+    _positionStreamSubscription = _locationRepository
+        .getPositionStream(distanceFilter: 10)
+        .listen((position) {
+      if (_startPosition == null) {
+        _startPosition = position;
+      } else {
+        double distance = Geolocator.distanceBetween(
+          _currentPosition?.latitude ?? _startPosition!.latitude,
+          _currentPosition?.longitude ?? _startPosition!.longitude,
+          position.latitude,
+          position.longitude,
+        );
+        if (distance >= 10) {
+          _totalDistance += distance / 1000;
+          _currentPosition = position;
+          notifyListeners();
+        }
+      }
+    });
   }
 
   void stopPositionStream() {

@@ -3,6 +3,7 @@ import '../models/google_login_model.dart';
 
 abstract class GoogleLoginRepository {
   Future<GoogleLoginModel?> signInWithGoogle();
+
   Future<void> signOut();
 }
 
@@ -11,21 +12,16 @@ class GoogleLoginRepositoryImpl implements GoogleLoginRepository {
 
   @override
   Future<GoogleLoginModel?> signInWithGoogle() async {
-    print("Google Login");
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
         return null; // 로그인 취소
       }
 
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
       return GoogleLoginModel(
         email: googleUser.email,
       );
     } catch (e) {
-      print("Google Login Error: $e");
       return null;
     }
   }

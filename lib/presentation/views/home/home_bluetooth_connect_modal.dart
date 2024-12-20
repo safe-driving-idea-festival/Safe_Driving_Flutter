@@ -1,19 +1,19 @@
 part of 'home_page.dart';
 
 class _HomeBluetoothConnectModal extends StatelessWidget {
-  const _HomeBluetoothConnectModal({super.key});
+  const _HomeBluetoothConnectModal();
 
   @override
   Widget build(BuildContext context) {
-    void navigator() async{
+    void navigator() async {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (builder) => const DrivingPage(),
           ),
           (_) => false);
-      await context.read<LocationViewModel>().initializeLocation();
       context.read<DrivingViewModel>().drivingOn();
       context.read<AbnormalBehaviorViewModel>().removeAbnormalBehaviorState();
+      await context.read<LocationViewModel>().initializeLocation();
     }
 
     return Consumer<DrivingViewModel>(
@@ -41,18 +41,18 @@ class _HomeBluetoothConnectModal extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     width: 2,
-                    color: value.drivingState == DrivingState.Off
+                    color: value.drivingState == DrivingState.off
                         ? AppColor.main
                         : AppColor.gray700,
                   ),
                 ),
-                child: value.drivingState == DrivingState.Off
+                child: value.drivingState == DrivingState.off
                     ? AppIcon.bluetooth(color: AppColor.main)
                     : AppIcon.bluetoothSearching(
                         color: AppColor.gray700,
                       ),
               ),
-              value.drivingState == DrivingState.Off
+              value.drivingState == DrivingState.off
                   ? Column(
                       spacing: 7,
                       children: [
@@ -87,12 +87,12 @@ class _HomeBluetoothConnectModal extends StatelessWidget {
                 spacing: 8,
                 children: [
                   ButtonComponent(
-                    onTap: value.drivingState == DrivingState.Off
+                    onTap: value.drivingState == DrivingState.off
                         ? navigator
                         : () {},
                     width: 255,
                     height: 46,
-                    color: value.drivingState == DrivingState.Off
+                    color: value.drivingState == DrivingState.off
                         ? AppColor.main
                         : AppColor.gray300,
                     child: Text(

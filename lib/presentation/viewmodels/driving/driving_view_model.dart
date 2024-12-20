@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 
 enum DrivingState {
-  On,
-  Off,
-  Pause,
-  BluetoothDisconnect,
+  on,
+  off,
+  pause,
+  bluetoothDisconnect,
 }
 
 class DrivingViewModel extends ChangeNotifier {
-  DrivingState _drivingState = DrivingState.BluetoothDisconnect;
+  DrivingState _drivingState = DrivingState.bluetoothDisconnect;
 
   DrivingState get drivingState => _drivingState;
 
   void drivingOn() {
-    _drivingState = DrivingState.On;
+    _drivingState = DrivingState.on;
     notifyListeners();
   }
 
   void drivingOff() {
-    _drivingState = DrivingState.Off;
+    _drivingState = DrivingState.off;
     notifyListeners();
   }
 
   void drivingPause() {
-    _drivingState = DrivingState.Pause;
+    _drivingState = DrivingState.pause;
     notifyListeners();
   }
 
   void bluetoothConnect() {
-    _drivingState = DrivingState.Off;
+    _drivingState = DrivingState.off;
     notifyListeners();
   }
 }

@@ -1,16 +1,16 @@
 part of 'driving_page.dart';
 
 class _StopModal extends StatelessWidget {
-  const _StopModal({super.key});
+  const _StopModal();
 
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, value, child) => Dialog(
-        insetPadding: EdgeInsets.all(16),
+        insetPadding: const EdgeInsets.all(16),
         backgroundColor: Colors.transparent,
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           height: 219,
           width: 343,
           decoration: const BoxDecoration(
@@ -122,7 +122,7 @@ class _StopModal extends StatelessWidget {
 }
 
 class _StopSecondModal extends StatelessWidget {
-  const _StopSecondModal({super.key});
+  const _StopSecondModal();
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +191,7 @@ class _StopSecondModal extends StatelessWidget {
                   onTap: () {
                     context.read<DrivingViewModel>().drivingOff();
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (builder) => MainPage()),
+                        MaterialPageRoute(builder: (builder) => const MainPage()),
                         (_) => false);
                   }),
               const SizedBox(

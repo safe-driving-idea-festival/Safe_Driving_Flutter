@@ -12,7 +12,7 @@ class DrivingInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.BluetoothDisconnect) {
+        DrivingState.bluetoothDisconnect) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 24),
         width: double.infinity,
@@ -73,7 +73,7 @@ class DrivingInfo extends StatelessWidget {
         ),
       );
     } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.Off) {
+        DrivingState.off) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 24),
         width: double.infinity,
@@ -136,7 +136,7 @@ class DrivingInfo extends StatelessWidget {
         ),
       );
     } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.On) {
+        DrivingState.on) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 24),
         width: double.infinity,
@@ -199,7 +199,7 @@ class DrivingInfo extends StatelessWidget {
         ),
       );
     } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.Pause) {
+        DrivingState.pause) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 24),
         width: double.infinity,

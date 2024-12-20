@@ -18,7 +18,6 @@ class _GoogleLoginButton extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: () async {
-                await context.read<GoogleLoginViewModel>().signInWithGoogle();
                 if (context
                     .read<GoogleLoginViewModel>()
                     .user!
@@ -28,6 +27,7 @@ class _GoogleLoginButton extends StatelessWidget {
                     MaterialPageRoute(builder: (builder) => const MainPage()),
                     (_) => false,
                   );
+                  await context.read<GoogleLoginViewModel>().signInWithGoogle();
                 }
               },
             ),

@@ -10,7 +10,7 @@ class _StopButton extends StatelessWidget {
       height: 48,
       color: AppColor.main,
       onTap:
-          context.read<DrivingViewModel>().drivingState == DrivingState.Pause
+          context.read<DrivingViewModel>().drivingState == DrivingState.pause
               ? () {
                   context.read<DrivingViewModel>().drivingOn();
                   context.read<LocationViewModel>().initializeLocation();
@@ -20,7 +20,7 @@ class _StopButton extends StatelessWidget {
                     builder: (builder) => const _StopModal(),
                   ),
       child: context.watch<DrivingViewModel>().drivingState ==
-              DrivingState.Pause
+              DrivingState.pause
           ? Row(
               spacing: 8,
               mainAxisAlignment: MainAxisAlignment.center,

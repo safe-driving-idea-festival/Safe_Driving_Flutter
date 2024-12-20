@@ -7,8 +7,6 @@ import 'package:safe_driving/presentation/viewmodels/driving/abnormal_behavior_v
 import 'package:safe_driving/presentation/views/main/main_page.dart';
 import 'package:safe_driving/presentation/widgets/button_components.dart';
 import 'package:safe_driving/presentation/widgets/driving_info_component.dart';
-import 'package:safe_driving/presentation/widgets/drunk_tag_component.dart';
-import 'package:safe_driving/presentation/widgets/sleep_tag_component.dart';
 
 import '../../viewmodels/driving/driving_view_model.dart';
 import '../../viewmodels/driving/location_view_model.dart';
@@ -19,7 +17,6 @@ part 'driving_appbar.dart';
 part 'driving_abnormal_behavior.dart';
 part 'driving_stop_button.dart';
 part 'driving_stop_modal.dart';
-part 'driving_drunk_modal.dart';
 
 class DrivingPage extends StatelessWidget {
   const DrivingPage({super.key});
