@@ -13,7 +13,7 @@ class _StopButton extends StatelessWidget {
           context.read<DrivingViewModel>().drivingState == DrivingState.pause
               ? () {
                   context.read<DrivingViewModel>().drivingOn();
-                  context.read<LocationViewModel>().initializeLocation();
+                  context.read<LocationViewModel>().startTracking();
                 }
               : () => showDialog(
                     context: context,
