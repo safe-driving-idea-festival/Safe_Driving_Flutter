@@ -11,8 +11,7 @@ class DrivingInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.bluetoothDisconnect) {
+    if (context.watch<DrivingViewModel>().drivingState == DrivingState.off) {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 24),
         width: double.infinity,
@@ -36,7 +35,7 @@ class DrivingInfo extends StatelessWidget {
               children: [
                 AppIcon.moon(color: AppColor.gray500),
                 Text(
-                  '블루투스 연결해주세요',
+                  '주행을 준비중입니다',
                   style: AppTypography.body2R.copyWith(
                     color: AppColor.gray500,
                   ),
@@ -46,7 +45,7 @@ class DrivingInfo extends StatelessWidget {
             AppIcon.defaultCar(color: AppColor.gray700),
             Text(
               textAlign: TextAlign.center,
-              '블루투스가 연결되지\n않았습니다',
+              '주행 준비중',
               style: AppTypography.title2B.copyWith(
                 fontWeight: FontWeight.w600,
                 color: AppColor.gray700,
@@ -63,71 +62,8 @@ class DrivingInfo extends StatelessWidget {
                   width: 36,
                   height: 36,
                 ),
-                Text(
-                  "${context.watch<LocationViewModel>().totalDistance.toStringAsFixed(2)}km",
-                  style: AppTypography.title3B,
-                )
-              ],
-            )
-          ],
-        ),
-      );
-    } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.off) {
-      return Container(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.main100,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(4),
-          ),
-          border: Border.all(
-            color: AppColor.gray100,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              spacing: 12,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.moon(
-                  color: AppColor.main400,
-                ),
-                Text(
-                  '졸음 운전 감지 준비 완료!!!',
-                  style: AppTypography.body2R.copyWith(
-                    color: AppColor.main400,
-                  ),
-                )
-              ],
-            ),
-            AppIcon.defaultCar(color: AppColor.main),
-            Text(
-              textAlign: TextAlign.center,
-              '블루투스 연결됨',
-              style: AppTypography.title2B.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.main,
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.speed(
-                  width: 36,
-                  height: 36,
-                ),
-                Text(
-                  "${context.watch<LocationViewModel>().totalDistance.toStringAsFixed(2)}km",
+                const Text(
+                  "0.00km",
                   style: AppTypography.title3B,
                 )
               ],
@@ -190,7 +126,7 @@ class DrivingInfo extends StatelessWidget {
                   height: 36,
                 ),
                 Text(
-                  "${context.watch<LocationViewModel>().totalDistance.toStringAsFixed(2)}km",
+                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
                   style: AppTypography.title3B,
                 )
               ],
@@ -253,7 +189,7 @@ class DrivingInfo extends StatelessWidget {
                   height: 36,
                 ),
                 Text(
-                  "${context.watch<LocationViewModel>().totalDistance.toStringAsFixed(2)}km",
+                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
                   style: AppTypography.title3B,
                 )
               ],
@@ -315,7 +251,7 @@ class DrivingInfo extends StatelessWidget {
                   height: 36,
                 ),
                 Text(
-                  "${context.watch<LocationViewModel>().totalDistance.toStringAsFixed(2)}km",
+                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
                   style: AppTypography.title3B,
                 )
               ],
