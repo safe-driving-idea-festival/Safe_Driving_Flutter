@@ -18,21 +18,20 @@ class _GoogleLoginButton extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: () async {
-                if (context
-                    .read<GoogleLoginViewModel>()
-                    .user!
-                    .email
-                    .isNotEmpty) {
+                if (await context.read<AuthViewModel>().signInWithGoogle()) {
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (builder) => const MainPage()),
                     (_) => false,
                   );
-                  await context.read<GoogleLoginViewModel>().signInWithGoogle();
+                } else if (context.read<AuthViewModel>().google != null) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (builder) => SignupPage()),
+                  );
                 }
               },
             ),
           ),
-        )
+        ),
       ],
     );
   }
