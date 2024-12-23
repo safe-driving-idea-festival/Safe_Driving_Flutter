@@ -4,11 +4,10 @@ enum DrivingState {
   on,
   off,
   pause,
-  bluetoothDisconnect,
 }
 
 class DrivingViewModel extends ChangeNotifier {
-  DrivingState _drivingState = DrivingState.bluetoothDisconnect;
+  DrivingState _drivingState = DrivingState.off;
 
   DrivingState get drivingState => _drivingState;
 
@@ -24,11 +23,6 @@ class DrivingViewModel extends ChangeNotifier {
 
   void drivingPause() {
     _drivingState = DrivingState.pause;
-    notifyListeners();
-  }
-
-  void bluetoothConnect() {
-    _drivingState = DrivingState.off;
     notifyListeners();
   }
 }
