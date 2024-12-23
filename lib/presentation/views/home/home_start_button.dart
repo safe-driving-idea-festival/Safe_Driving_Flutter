@@ -7,24 +7,12 @@ class _StartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonComponent(
       onTap: () async {
-        if (context.read<DrivingViewModel>().drivingState == DrivingState.off) {
-          context.read<DrivingViewModel>().drivingOn();
-          context
-              .read<AbnormalBehaviorViewModel>()
-              .removeAbnormalBehaviorState();
-          Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (builder) => const DrivingPage()),
-              (_) => false);
-          await context.read<LocationViewModel>().initializeLocation();
-        } else {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) =>
-                const _HomeBluetoothConnectModal(),
-          );
-          Timer(const Duration(seconds: 1),
-              () => context.read<DrivingViewModel>().bluetoothConnect());
-        }
+        context.read<DrivingViewModel>().drivingOn();
+        context.read<AbnormalBehaviorViewModel>().removeAbnormalBehaviorState();
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (builder) => const DrivingPage()),
+            (_) => false);
+        await context.read<LocationViewModel>().startTracking();
       },
       height: 70,
       width: 171,
