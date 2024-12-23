@@ -9,9 +9,7 @@ import '../music/music_page.dart';
 import '../profile/profile_page.dart';
 
 part 'main_scaffold.dart';
-
 part 'main_bottom_navigation_bar.dart';
-
 part 'main_appbar.dart';
 
 class MainPage extends StatefulWidget {
