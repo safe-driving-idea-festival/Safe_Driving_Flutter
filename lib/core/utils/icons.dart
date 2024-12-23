@@ -315,6 +315,13 @@ class AppIcon {
     );
   }
 
+  static SvgPicture plus({
+    Color color = Colors.black,
+    double width = 24,
+    double height = 24,
+  }) =>
+      _icon(path: 'assets/icons/plus.svg', color: color, width: width, height: height);
+
   static SvgPicture googleLogin({
     Color color = Colors.black,
     double width = 343,
