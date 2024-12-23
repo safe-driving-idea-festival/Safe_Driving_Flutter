@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:safe_driving/data/repositories/auth_repository.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/abnormal_behavior_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/driving_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/location_view_model.dart';
-import 'package:safe_driving/presentation/viewmodels/login/google_login_view_model.dart';
+import 'package:safe_driving/presentation/viewmodels/login/login_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/main/main_bottom_navigation_bar_view_model.dart';
 import 'package:safe_driving/presentation/views/splash/splsah_page.dart';
 import 'core/utils/colors.dart';
@@ -12,6 +14,11 @@ import 'data/repositories/location_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
+  // await Firebase.initializeApp();
+  // FirebaseMessaging messaging = FirebaseMessaging.instance;
+  // String? token = await messaging.getToken();
+  // print("FCM Token: $token");
   runApp(const MyApp());
 }
 
@@ -33,14 +40,17 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (BuildContext context) => LocationViewModel(
-            GeolocatorLocationRepository(),
+            LocationRepositoryImpl(),
           ),
         ),
         ChangeNotifierProvider(
-          create: (BuildContext context) => GoogleLoginViewModel(
+          create: (BuildContext context) => AuthViewModel(
             GoogleLoginRepositoryImpl(),
+            AuthRepositoryImpl(),
+
           ),
         ),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
