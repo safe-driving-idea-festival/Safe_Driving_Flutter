@@ -69,7 +69,7 @@ class _StopModal extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      context.read<LocationViewModel>().stopPositionStream();
+                      context.read<LocationViewModel>().stopTracking();
                       context.read<DrivingViewModel>().drivingPause();
                       Navigator.pop(context);
                     },
@@ -85,8 +85,7 @@ class _StopModal extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      context.read<LocationViewModel>().stopPositionStream();
-                      context.read<LocationViewModel>().resetTotalDistance();
+                      context.read<LocationViewModel>().stopTracking();
                       Navigator.pop(context);
                       showDialog(
                         context: context,
@@ -179,21 +178,23 @@ class _StopSecondModal extends StatelessWidget {
                 height: 12,
               ),
               ButtonComponent(
-                  width: double.infinity,
-                  height: 43,
-                  color: AppColor.main,
-                  child: Text(
-                    '확인',
-                    style: AppTypography.body2B.copyWith(
-                      color: AppColor.white,
-                    ),
+                width: double.infinity,
+                height: 43,
+                color: AppColor.main,
+                child: Text(
+                  '확인',
+                  style: AppTypography.body2B.copyWith(
+                    color: AppColor.white,
                   ),
-                  onTap: () {
-                    context.read<DrivingViewModel>().drivingOff();
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (builder) => const MainPage()),
-                        (_) => false);
-                  }),
+                ),
+                onTap: () {
+                  context.read<DrivingViewModel>().drivingOff();
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (builder) => const MainPage()),
+                      (_) => false);
+                  context.read<LocationViewModel>().resetDistance();
+                },
+              ),
               const SizedBox(
                 height: 12,
               ),
