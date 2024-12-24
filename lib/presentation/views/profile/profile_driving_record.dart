@@ -19,7 +19,7 @@ class _DrivingRecord extends StatelessWidget {
               child: InkWell(
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (builder) => _MoreDrive(),
+                    builder: (builder) => const _MoreDrive(),
                   ),
                 ),
                 child: Container(
