@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:safe_driving/core/utils/colors.dart';
 import 'package:safe_driving/core/utils/fonts.dart';
 import 'package:safe_driving/core/utils/icons.dart';
-import 'package:safe_driving/data/models/auth_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/abnormal_behavior_view_model.dart';
 import 'package:safe_driving/presentation/views/main/main_page.dart';
 import 'package:safe_driving/presentation/widgets/button_components.dart';
