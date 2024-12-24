@@ -25,8 +25,8 @@ class _MoreDrive extends StatelessWidget {
                 height: 16,
               ),
               ListView.separated(
-                padding: EdgeInsets.all(0),
-                physics: NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(0),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) => _DriveDetection(
                   driveModel: context
