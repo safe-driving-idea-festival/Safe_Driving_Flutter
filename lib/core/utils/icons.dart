@@ -289,6 +289,13 @@ class AppIcon {
   }) =>
       _icon(path: 'assets/icons/battery.svg', color: color, width: width, height: height);
 
+  static SvgPicture emergency({
+    Color color = Colors.black,
+    double width = 24,
+    double height = 24,
+  }) =>
+      _icon(path: 'assets/icons/etc/emergency.svg', color: color, width: width, height: height);
+
   static SvgPicture group({
     Color color = Colors.black,
     double width = 24,
