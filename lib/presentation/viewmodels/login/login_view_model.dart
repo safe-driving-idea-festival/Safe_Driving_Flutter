@@ -63,7 +63,6 @@ class AuthViewModel with ChangeNotifier {
     );
     if (login != null) {
       _loginResponseModel = login;
-      print(_loginResponseModel?.accessToken);
       notifyListeners();
       if (login.authority == "UNAUTHORIZATION") {
         return false;
