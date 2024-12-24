@@ -7,12 +7,12 @@ class _StartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonComponent(
       onTap: () async {
-        context.read<DrivingViewModel>().drivingOn();
+        context.read<DrivingViewModel>().drivingOn(context.read<AuthViewModel>().loginResponseModel!);
         context.read<AbnormalBehaviorViewModel>().removeAbnormalBehaviorState();
+        context.read<LocationViewModel>().startTracking();
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (builder) => const DrivingPage()),
             (_) => false);
-        await context.read<LocationViewModel>().startTracking();
       },
       height: 70,
       width: 171,
