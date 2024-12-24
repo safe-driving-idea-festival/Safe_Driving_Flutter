@@ -1,7 +1,7 @@
 part of 'signup_page.dart';
 
 class _EmergencyNumber extends StatelessWidget {
-   _EmergencyNumber({super.key});
+   _EmergencyNumber();
 
   final _formKey = GlobalKey<FormState>(); // FormKey 선언
 
