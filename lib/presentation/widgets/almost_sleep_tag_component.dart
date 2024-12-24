@@ -4,9 +4,8 @@ import '../../core/utils/colors.dart';
 import '../../core/utils/fonts.dart';
 import '../../core/utils/icons.dart';
 
-
-class DrunkTagComponent extends StatelessWidget {
-  const DrunkTagComponent({super.key});
+class AlmostSleepTagComponent extends StatelessWidget {
+  const AlmostSleepTagComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +23,7 @@ class DrunkTagComponent extends StatelessWidget {
         ),
       ),
       child: Row(
+        spacing: 4,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AppIcon.bar(
@@ -32,7 +32,7 @@ class DrunkTagComponent extends StatelessWidget {
             height: 16,
           ),
           Text(
-            '음주',
+            '졸음',
             style: AppTypography.caption1R.copyWith(
               color: AppColor.error,
             ),
