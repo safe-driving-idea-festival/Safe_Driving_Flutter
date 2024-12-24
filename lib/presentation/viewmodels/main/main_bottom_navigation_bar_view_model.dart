@@ -7,7 +7,6 @@ class MainBottomNavigationBarViewModel extends ChangeNotifier {
 
   void setIndex(int index) {
     _currentIndex = index;
-    print(_currentIndex);
     notifyListeners();
   }
 }
