@@ -5,6 +5,8 @@ class _GoogleLoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = context.read<AuthViewModel>();
+
     return Stack(
       alignment: Alignment.center,
       clipBehavior: Clip.none,
@@ -18,18 +20,23 @@ class _GoogleLoginButton extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               onTap: () async {
-                if (await context.read<AuthViewModel>().signInWithGoogle()) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (builder) => const MainPage()),
-                    (_) => false,
-                  );
-                } else if (context.read<AuthViewModel>().google != null) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (builder) => SignupPage(),
-                    ),
-                  );
-                }
+                await authViewModel.signInWithGoogle().then((result) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (result) {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (builder) => const MainPage()),
+                        (_) => false,
+                      );
+                    } else if (authViewModel.google != null) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (builder) => SignupPage(),
+                        ),
+                      );
+                    }
+                  });
+                });
               },
             ),
           ),
