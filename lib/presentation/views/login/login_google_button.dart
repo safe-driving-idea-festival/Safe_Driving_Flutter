@@ -25,7 +25,9 @@ class _GoogleLoginButton extends StatelessWidget {
                   );
                 } else if (context.read<AuthViewModel>().google != null) {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (builder) => SignupPage()),
+                    MaterialPageRoute(
+                      builder: (builder) => SignupPage(),
+                    ),
                   );
                 }
               },
