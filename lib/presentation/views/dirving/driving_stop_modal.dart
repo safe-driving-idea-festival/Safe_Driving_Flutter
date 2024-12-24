@@ -188,7 +188,7 @@ class _StopSecondModal extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  context.read<DrivingViewModel>().drivingOff();
+                  context.read<DrivingViewModel>().drivingOff(context.read<AuthViewModel>().loginResponseModel!);
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (builder) => const MainPage()),
                       (_) => false);
