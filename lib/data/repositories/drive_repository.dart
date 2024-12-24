@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:safe_driving/data/models/auth_model.dart';
@@ -20,29 +18,28 @@ class DriveRepositoryImpl implements DriveRepository {
 
   @override
   Future<DriveStartModel?> start(LoginResponseModel loginResponseModel) async {
-    print(jsonEncode(loginResponseModel.accessToken));
     try {
       final response = await _dio.post(
         '/drive/start',
-        options: Options(headers: {'Authorization': loginResponseModel.accessToken}),
+        options:
+            Options(headers: {'Authorization': loginResponseModel.accessToken}),
       );
       return DriveStartModel.fromJson(response.data);
-    } on DioException catch (e) {
-      print(e.response?.data);
+    } on DioException {
       return null;
     }
   }
 
   @override
-  Future<DriveStopModel?> stop(LoginResponseModel loginResponseModel) async{
+  Future<DriveStopModel?> stop(LoginResponseModel loginResponseModel) async {
     try {
       final response = await _dio.post(
         '/drive/end',
-        options: Options(headers: {'Authorization': loginResponseModel.accessToken}),
+        options:
+            Options(headers: {'Authorization': loginResponseModel.accessToken}),
       );
       return DriveStopModel.fromJson(response.data);
-    } on DioException catch (e) {
-      print(e.response?.data);
+    } on DioException {
       return null;
     }
   }
