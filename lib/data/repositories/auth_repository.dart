@@ -26,7 +26,7 @@ class AuthRepositoryImpl implements AuthRepository {
         data: jsonEncode(loginRequestModel!.toJson()),
       );
       return LoginResponseModel.fromJson(response.data);
-    } on DioException catch (e) {
+    } on DioException {
       return null;
     }
   }
@@ -34,13 +34,12 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<SignupErrorModel?> signUp(SignupRequestModel? signupModel) async {
     try {
-      final response = await _dio.post(
+      await _dio.post(
         '/user/signup',
         data: jsonEncode(signupModel!.toJson()),
       );
       return null;
     } on DioException catch (e) {
-      print( SignupErrorModel.fromJson(e.response?.data).message);
       return SignupErrorModel.fromJson(e.response?.data);
     }
   }
