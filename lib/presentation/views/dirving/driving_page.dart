@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:safe_driving/core/utils/colors.dart';
 import 'package:safe_driving/core/utils/fonts.dart';
 import 'package:safe_driving/core/utils/icons.dart';
+import 'package:safe_driving/data/models/auth_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/abnormal_behavior_view_model.dart';
 import 'package:safe_driving/presentation/views/main/main_page.dart';
 import 'package:safe_driving/presentation/widgets/button_components.dart';
@@ -10,6 +11,7 @@ import 'package:safe_driving/presentation/widgets/driving_info_component.dart';
 
 import '../../viewmodels/driving/driving_view_model.dart';
 import '../../viewmodels/driving/location_view_model.dart';
+import '../../viewmodels/login/login_view_model.dart';
 
 part 'driving_scaffold.dart';
 part 'driving_info.dart';
