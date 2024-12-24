@@ -21,6 +21,9 @@ class _Button extends StatelessWidget {
         if (formKey.currentState?.validate() ?? false) {
           print('Form is valid');
           final login = await context.read<AuthViewModel>().signUp();
+          if(context.read<AuthViewModel>().errorMessage != ''){
+            
+          }
           if (login) {
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (builder) => MainPage()),
