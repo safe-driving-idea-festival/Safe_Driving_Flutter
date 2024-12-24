@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Copy Secret To application module
-        run: echo "PROJECT_API_KEY=$MAP_API_KEY" >> .env
+        run: echo "API_URL=$MAP_API_KEY" >> .env
         env:
-          MAP_API_KEY: ${{ secrets.PROJECT_API_KEY }}
+          MAP_API_KEY: ${{ secrets.API_URL }}
 
       - uses: actions/setup-java@v1
         with:
