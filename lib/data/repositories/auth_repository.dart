@@ -7,7 +7,7 @@ import 'package:safe_driving/data/models/auth_model.dart';
 abstract class AuthRepository {
   Future<LoginResponseModel?> login(LoginRequestModel? loginRequestModel);
 
-  Future<bool> signUp(SignupRequestModel? signupModel);
+  Future<SignupErrorModel?> signUp(SignupRequestModel? signupModel);
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -25,24 +25,23 @@ class AuthRepositoryImpl implements AuthRepository {
         '/user/login',
         data: jsonEncode(loginRequestModel!.toJson()),
       );
-      return LoginResponseModel.fromJson(response.headers.map);
-    } catch (e) {
+      return LoginResponseModel.fromJson(response.data);
+    } on DioException catch (e) {
       return null;
     }
   }
 
   @override
-  Future<bool> signUp(SignupRequestModel? signupModel) async {
-    final response = await _dio.post(
-      '/user/signup',
-      data: jsonEncode(signupModel!.toJson()),
-    );
+  Future<SignupErrorModel?> signUp(SignupRequestModel? signupModel) async {
     try {
-      print(response.data['message']);
-      return true;
-    } catch (e) {
-      print(response.data['message']);
-      return false;
+      final response = await _dio.post(
+        '/user/signup',
+        data: jsonEncode(signupModel!.toJson()),
+      );
+      return null;
+    } on DioException catch (e) {
+      print( SignupErrorModel.fromJson(e.response?.data).message);
+      return SignupErrorModel.fromJson(e.response?.data);
     }
   }
 }
