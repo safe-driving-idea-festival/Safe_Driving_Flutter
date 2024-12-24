@@ -1,7 +1,7 @@
 part of 'signup_page.dart';
 
 class _Scaffold extends StatelessWidget {
-  _Scaffold({
+  const _Scaffold({
     required this.appbar,
     required this.header,
     required this.name,
