@@ -14,31 +14,29 @@ class AuthViewModel with ChangeNotifier {
   );
 
   GoogleLoginModel? _google;
-  String _authorization = '';
+  LoginResponseModel? _loginResponseModel;
+  String _errorMessage = '';
   final _nameController = TextEditingController();
   final _camIdController = TextEditingController();
   final _emergencyNumbersController = TextEditingController();
   final List<String> _emergencyNumber = [];
 
   GoogleLoginModel? get google => _google;
-
-  String get authorization => _authorization;
-
+  LoginResponseModel? get loginResponseModel => _loginResponseModel;
+  String get errorMessage => _errorMessage;
   TextEditingController get nameController => _nameController;
-
   TextEditingController get camIdController => _camIdController;
-
   TextEditingController get emergencyNumbersController =>
       _emergencyNumbersController;
-
   List get emergencyNumber => _emergencyNumber;
+
 
   Future<bool> signInWithGoogle() async {
     final google = await _googleRepository.signInWithGoogle();
     if (google != null) {
       _google = google;
-      _login();
-      return false;
+      notifyListeners();
+      return _login();
     }
     return false;
   }
@@ -52,11 +50,10 @@ class AuthViewModel with ChangeNotifier {
         emergencyNumbers: _emergencyNumber,
       ),
     );
-    if (signup) {
-      _login();
-      notifyListeners();
-      return true;
+    if (signup == null) {
+      return _login();
     }
+    _errorMessage = signup.message;
     return false;
   }
 
@@ -65,8 +62,12 @@ class AuthViewModel with ChangeNotifier {
       LoginRequestModel(accessToken: _google!.accesstoken),
     );
     if (login != null) {
-      _authorization = login.authorization;
+      _loginResponseModel = login;
+      print(_loginResponseModel?.accessToken);
       notifyListeners();
+      if (login.authority == "UNAUTHORIZATION") {
+        return false;
+      }
       return true;
     }
     return false;
