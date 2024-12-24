@@ -1,7 +1,7 @@
 part of 'signup_page.dart';
 
 class _CamId extends StatelessWidget {
-  const _CamId({super.key});
+  const _CamId();
 
   @override
   Widget build(BuildContext context) {
