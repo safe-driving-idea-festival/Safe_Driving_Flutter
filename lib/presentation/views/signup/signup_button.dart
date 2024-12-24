@@ -19,18 +19,21 @@ class _Button extends StatelessWidget {
       ),
       onTap: () async {
         if (formKey.currentState?.validate() ?? false) {
-          print('Form is valid');
-          final login = await context.read<AuthViewModel>().signUp();
-          if(context.read<AuthViewModel>().errorMessage != ''){
-            
-          }
-          if (login) {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (builder) => MainPage()),
-                (_) => false,);
-          }
-        } else {
-          print('Form is invalid');
+          final authViewModel = context.read<AuthViewModel>();
+          final login = await authViewModel.signUp();
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              if (authViewModel.errorMessage.isNotEmpty) {
+              }
+
+              if (login) {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (builder) => const MainPage()),
+                  (_) => false,
+                );
+              }
+            },
+          );
         }
       },
     );
