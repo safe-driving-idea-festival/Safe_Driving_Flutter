@@ -29,7 +29,9 @@ class _Scaffold extends StatelessWidget {
             abnormalBehavior,
             const Spacer(),
             stop,
-            const SizedBox(height: 43,)
+            const SizedBox(
+              height: 43,
+            )
           ],
         ),
       ),

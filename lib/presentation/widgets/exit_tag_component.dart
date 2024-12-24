@@ -5,15 +5,15 @@ import '../../core/utils/fonts.dart';
 import '../../core/utils/icons.dart';
 
 
-class DrunkTagComponent extends StatelessWidget {
-  const DrunkTagComponent({super.key});
+class ExitTagComponent extends StatelessWidget {
+  const ExitTagComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: 63,
       height: 33,
+      width: 94,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColor.error,
@@ -24,6 +24,7 @@ class DrunkTagComponent extends StatelessWidget {
         ),
       ),
       child: Row(
+        spacing: 4,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AppIcon.bar(
@@ -32,7 +33,7 @@ class DrunkTagComponent extends StatelessWidget {
             height: 16,
           ),
           Text(
-            '음주',
+            '화면 이탈',
             style: AppTypography.caption1R.copyWith(
               color: AppColor.error,
             ),

@@ -1,7 +1,7 @@
 class GoogleLoginModel {
-  final String email;
+  final String accesstoken;
 
   GoogleLoginModel({
-    required this.email,
+    required this.accesstoken,
   });
 }

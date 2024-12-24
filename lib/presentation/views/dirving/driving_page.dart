@@ -10,6 +10,7 @@ import 'package:safe_driving/presentation/widgets/driving_info_component.dart';
 
 import '../../viewmodels/driving/driving_view_model.dart';
 import '../../viewmodels/driving/location_view_model.dart';
+import '../../viewmodels/login/login_view_model.dart';
 
 part 'driving_scaffold.dart';
 part 'driving_info.dart';

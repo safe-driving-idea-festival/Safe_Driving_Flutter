@@ -2,32 +2,49 @@ name: CI
 
 on:
   push:
-    branches:
-      - develop
   pull_request:
+
 
 jobs:
   flutter_test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+
+      - name: Checkout Flutter repository
+        uses: actions/checkout@v4
 
       - name: Copy Secret To application module
-        run: echo "PROJECT_API_KEY=$MAP_API_KEY" >> .env
+        run: echo "API_URL=$MAP_API_KEY" >> .env
         env:
-          MAP_API_KEY: ${{ secrets.PROJECT_API_KEY }}
+          MAP_API_KEY: ${{ secrets.API_URL }}
 
-      - uses: actions/setup-java@v1
+      - name: Setup Java
+        uses: actions/setup-java@v3.12.0
         with:
-          java-version: '12.x'
-          
-      - uses: subosito/flutter-action@v1
+          distribution: 'oracle'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: 3.27.1
 
-      - run: flutter pub get
-      - run: flutter analyze
+      - name: Checking Flutter Version
+        run: flutter --version
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Analyze project source
+        run: flutter analyze
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Build AppBundle
+        run: flutter build appbundle
 
       - name: Set timestamp
         id: timestamp
