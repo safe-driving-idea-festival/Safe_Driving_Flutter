@@ -24,6 +24,8 @@ class SleepTagComponent extends StatelessWidget {
         ),
       ),
       child: Row(
+        spacing: 4,
+
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AppIcon.moon(
@@ -32,7 +34,7 @@ class SleepTagComponent extends StatelessWidget {
             height: 16,
           ),
           Text(
-            '졸음',
+            '수면',
             style: AppTypography.caption1R.copyWith(
               color: AppColor.error,
             ),
