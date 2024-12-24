@@ -75,6 +75,7 @@ flutter:
     - .env
     - assets/images/
     - assets/icons/
+    - assets/icons/profile.png
     - assets/icons/bluetooth/
     - assets/icons/car/
     - assets/icons/check/
