@@ -1,4 +1,6 @@
-class LoginRequestModel {
+abstract class LoginModel{}
+
+class LoginRequestModel implements LoginModel{
   final String accessToken;
 
   LoginRequestModel({required this.accessToken});
@@ -10,23 +12,30 @@ class LoginRequestModel {
   }
 }
 
-class LoginResponseModel {
-  final String authorization;
+class LoginResponseModel implements LoginModel {
+  final String authority;
+  final String accessToken;
 
-  LoginResponseModel({required this.authorization});
+  LoginResponseModel({
+    required this.authority,
+    required this.accessToken,
+  });
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
     return LoginResponseModel(
-      authorization: json['authorization'][0],
+      authority: json['authority'],
+      accessToken: json['accessToken'],
     );
   }
 }
 
-class SignupRequestModel {
+abstract class SignupModel{}
+
+class SignupRequestModel implements SignupModel{
   final String accessToken;
   final String name;
   final String camId;
-  final List<String> emergencyNumbers;
+  final List emergencyNumbers;
 
   SignupRequestModel({
     required this.accessToken,
@@ -42,5 +51,17 @@ class SignupRequestModel {
       'camId': camId,
       'emergencyNumbers': emergencyNumbers,
     };
+  }
+}
+
+class SignupErrorModel implements SignupModel{
+  final String message;
+
+  SignupErrorModel({
+    required this.message,
+  });
+
+  factory SignupErrorModel.fromJson(Map<String, dynamic> json) {
+    return SignupErrorModel(message: json['message']);
   }
 }
