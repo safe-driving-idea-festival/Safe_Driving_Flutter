@@ -33,6 +33,7 @@ class AuthViewModel with ChangeNotifier {
 
   Future<bool> signInWithGoogle() async {
     final google = await _googleRepository.signInWithGoogle();
+    print(google!.accesstoken);
     if (google != null) {
       _google = google;
       notifyListeners();
@@ -61,8 +62,10 @@ class AuthViewModel with ChangeNotifier {
     final login = await _authRepository.login(
       LoginRequestModel(accessToken: _google!.accesstoken),
     );
+
     if (login != null) {
       _loginResponseModel = login;
+      print(_loginResponseModel!.accessToken);
       notifyListeners();
       if (login.authority == "UNAUTHORIZATION") {
         return false;
