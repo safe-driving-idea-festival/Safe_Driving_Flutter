@@ -26,7 +26,7 @@ class AuthRepositoryImpl implements AuthRepository {
         data: jsonEncode(loginRequestModel!.toJson()),
       );
       return LoginResponseModel.fromJson(response.data);
-    } on DioException {
+    } catch(e) {
       return null;
     }
   }
