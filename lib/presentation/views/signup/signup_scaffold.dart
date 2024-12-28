@@ -26,30 +26,30 @@ class _Scaffold extends StatelessWidget {
         child: Column(
           children: [
             appbar,
-            const SizedBox(
-              height: 24,
+            SizedBox(
+              height: 24.h, // .h 추가
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w), // .w 추가
               child: Form(
                 key: formKey,
                 child: Column(
+                  spacing: 24.h,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 24,
                   children: [
                     header,
-                    const SizedBox(
-                      height: 6,
+                    SizedBox(
+                      height: 6.h, // .h 추가
                     ),
                     name,
                     camId,
                     emergencyNumbers,
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h, // .h 추가
                     ),
                     button,
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: 10.h, // .h 추가
                     ),
                   ],
                 ),
