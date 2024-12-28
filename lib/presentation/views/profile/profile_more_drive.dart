@@ -5,6 +5,12 @@ class _MoreDrive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileModel = context.watch<ProfileViewModel>().profileModel;
+
+    final hasDrives = profileModel?.driveCount != null && profileModel!.driveCount > 0;
+    final driveCount = hasDrives ? profileModel!.driveCount : 0;
+    final displayedDrives = hasDrives ? profileModel!.drives : [];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.white,
@@ -12,39 +18,37 @@ class _MoreDrive extends StatelessWidget {
         scrolledUnderElevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 '운전 기록',
                 style: AppTypography.title2B,
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              ListView.separated(
-                padding: const EdgeInsets.all(0),
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) => _DriveDetection(
-                  driveModel: context
-                          .watch<ProfileViewModel>()
-                          .profileModel!
-                          .drives[
-                      context.watch<ProfileViewModel>().profileModel!.driveCount -
-                          index -
-                          1],
+              SizedBox(height: 16.h),
+              if (!hasDrives)
+                Center(
+                  child: Text(
+                    '운전 기록이 없습니다.',
+                    style: AppTypography.caption1R,
+                  ),
+                )
+              else
+                ListView.separated(
+                  padding: const EdgeInsets.all(0),
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) => _DriveDetection(
+                    driveModel: displayedDrives[driveCount - index - 1],
+                  ),
+                  separatorBuilder: (BuildContext context, int index) => SizedBox(
+                    height: 8.h,
+                  ),
+                  itemCount: driveCount,
                 ),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const SizedBox(
-                  height: 8,
-                ),
-                itemCount:
-                    context.watch<ProfileViewModel>().profileModel!.driveCount,
-              ),
-              const SizedBox(height: 20,)
+              SizedBox(height: 20.h),
             ],
           ),
         ),
