@@ -45,7 +45,7 @@ class _Button extends StatelessWidget {
                         style: AppTypography.body2R,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 16),
+                       SizedBox(height: 16.h),
                       ElevatedButton(
                         onPressed: () => Navigator.of(context).pop(),
                         style: ElevatedButton.styleFrom(
