@@ -9,8 +9,8 @@ class _DrivingRecord extends StatelessWidget {
 
     final hasDrives =
         profileModel?.driveCount != null && profileModel!.driveCount > 0;
-    final driveCount = hasDrives ? profileModel!.driveCount : 0;
-    final displayedDrives = hasDrives ? profileModel!.drives : [];
+    final driveCount = hasDrives ? profileModel.driveCount : 0;
+    final displayedDrives = hasDrives ? profileModel.drives : [];
 
     return Column(
       children: [
