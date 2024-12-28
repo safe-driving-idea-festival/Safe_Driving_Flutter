@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:safe_driving/data/models/auth_model.dart';
-import 'package:safe_driving/data/models/drive_model.dart';
 import 'package:safe_driving/data/repositories/drive_repository.dart';
 
 enum DrivingState {
@@ -12,7 +11,6 @@ enum DrivingState {
 class DrivingViewModel extends ChangeNotifier {
   DrivingState _drivingState = DrivingState.off;
   final DriveRepository _driveRepository;
-  DriveStopModel? _driveStopModel;
   bool _isLoading = false;
 
   DrivingViewModel(this._driveRepository);
