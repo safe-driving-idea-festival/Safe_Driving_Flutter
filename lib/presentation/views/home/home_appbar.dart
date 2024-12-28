@@ -6,15 +6,14 @@ class _Appbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: AppBar(
         leading: AppIcon.logo(),
-        leadingWidth: 107,
+        leadingWidth: 107.w,
       ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(88);
+  Size get preferredSize => Size.fromHeight(88.h);
 }
