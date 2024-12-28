@@ -139,15 +139,13 @@ class _StopSecondModal extends StatelessWidget {
               SizedBox(
                 height: 16.h,
               ),
-              Container(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Wrap(
-                    spacing: 4.w,
-                    children: context
-                        .watch<AbnormalBehaviorViewModel>()
-                        .abnormalBehaviorState,
-                  ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Wrap(
+                  spacing: 4.w,
+                  children: context
+                      .watch<AbnormalBehaviorViewModel>()
+                      .abnormalBehaviorState,
                 ),
               ),
               SizedBox(
