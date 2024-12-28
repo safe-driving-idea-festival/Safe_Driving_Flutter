@@ -13,14 +13,13 @@ class _Scaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16.0, 70, 16, 0),
+        padding: EdgeInsets.fromLTRB(16.0.w, 70.h, 16.w, 0.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 36,
+          spacing: 36.h,
           children: [
             profile,
             drivingRecord,
-
           ],
         ),
       ),
