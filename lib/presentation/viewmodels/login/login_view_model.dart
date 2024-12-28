@@ -70,10 +70,8 @@ class AuthViewModel with ChangeNotifier {
       LoginRequestModel(
           accessToken: _google!.accesstoken, deviceToken: firebaseToken),
     );
-    print(google?.accesstoken);
     if (login != null) {
       _loginResponseModel = login;
-      print(_loginResponseModel!.accessToken);
       notifyListeners();
       return true;
     }
@@ -82,7 +80,6 @@ class AuthViewModel with ChangeNotifier {
 
   Future<void> _getMyDeviceToken() async {
     firebaseToken = (await FirebaseMessaging.instance.getToken())!;
-    print("내 디바이스 토큰: $firebaseToken");
   }
 
   Future<void> signOut() async {
