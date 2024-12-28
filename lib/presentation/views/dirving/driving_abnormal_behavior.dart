@@ -19,7 +19,7 @@ class _AbnormalBehavior extends StatelessWidget {
             ),
           ],
         ),
-         Container(
+         SizedBox(
            height: 110.h,
            child: SingleChildScrollView(
              child: Wrap(
