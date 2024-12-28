@@ -7,11 +7,11 @@ class _CamId extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 8,
+      spacing: 8.h,
       children: [
         Row(
           children: [
-            const Text(
+            Text(
               '카메라 아이디',
               style: AppTypography.body2R,
             ),

@@ -1,4 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+    <!-- 필수 권한 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
@@ -7,13 +9,15 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
             android:label="안전 운전"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher"
             android:enableOnBackInvokedCallback="true">
+
+        <!-- Main Activity 설정 -->
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
@@ -25,10 +29,8 @@
                 android:windowSoftInputMode="adjustResize"
                 android:showWhenLocked="true"
                 android:turnScreenOn="true">
-            <!-- Specifies an Android theme to apply to this Activity as soon as
-                 the Android process has started. This theme is visible to the user
-                 while the Flutter UI initializes. After that, this theme continues
-                 to determine the Window background behind the Flutter UI. -->
+
+            <!-- Flutter 기본 설정 -->
             <meta-data
                     android:name="io.flutter.embedding.android.NormalTheme"
                     android:resource="@style/NormalTheme"
@@ -37,26 +39,38 @@
                     android:name="com.google.firebase.messaging.default_notification_channel_id"
                     android:value="high_importance_channel"
             />
+
+            <!-- 알림 클릭 시 처리 -->
             <intent-filter>
                 <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
+
+            <!-- 앱 실행 관련 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- Don't delete the meta-data below.
-             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+
+        <!-- Firebase Messaging 서비스 등록 -->
+        <service
+                android:name="com.google.firebase.messaging.FirebaseMessagingService"
+                android:exported="true"
+                tools:replace="android:exported">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <!-- Flutter 기본 설정 -->
         <meta-data
                 android:name="flutterEmbedding"
                 android:value="2"/>
-    </application>
-    <!-- Required to query activities that can process text, see:
-         https://developer.android.com/training/package-visibility and
-         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
-         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    </application>
+
+    <!-- 앱이 처리할 수 있는 인텐트 쿼리 -->
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>

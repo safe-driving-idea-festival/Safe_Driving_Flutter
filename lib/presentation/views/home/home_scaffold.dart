@@ -16,9 +16,9 @@ class _Scaffold extends StatelessWidget {
     return Scaffold(
       appBar: appbar,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
-          spacing: 37,
+          spacing: 37.h,
           children: [
             drivingInfo,
             button,

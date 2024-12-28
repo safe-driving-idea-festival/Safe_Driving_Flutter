@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // .w, .h 사용을 위해 추가
 import '../../core/utils/colors.dart';
 import '../../core/utils/fonts.dart';
 import '../../core/utils/icons.dart';
@@ -11,254 +12,133 @@ class DrivingInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.watch<DrivingViewModel>().drivingState == DrivingState.off) {
-      return Container(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.gray100,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(4),
-          ),
-          border: Border.all(
-            color: AppColor.gray100,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              spacing: 12,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.moon(color: AppColor.gray500),
-                Text(
-                  '주행을 준비중입니다',
-                  style: AppTypography.body2R.copyWith(
-                    color: AppColor.gray500,
-                  ),
-                )
-              ],
-            ),
-            AppIcon.defaultCar(color: AppColor.gray700),
-            Text(
-              textAlign: TextAlign.center,
-              '주행 준비중',
-              style: AppTypography.title2B.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.gray700,
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.speed(
-                  width: 36,
-                  height: 36,
-                ),
-                const Text(
-                  "0.00km",
-                  style: AppTypography.title3B,
-                )
-              ],
-            )
-          ],
-        ),
-      );
-    } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.on) {
-      return Container(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.main100,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(4),
-          ),
-          border: Border.all(
-            color: AppColor.gray100,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              spacing: 12,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.moon(
-                  color: AppColor.main400,
-                ),
-                Text(
-                  '졸음 운전 감지 중',
-                  style: AppTypography.body2R.copyWith(
-                    color: AppColor.main400,
-                  ),
-                )
-              ],
-            ),
-            AppIcon.defaultCar(color: AppColor.main),
-            Text(
-              textAlign: TextAlign.center,
-              '운전 중',
-              style: AppTypography.title2B.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.main,
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.speed(
-                  width: 36,
-                  height: 36,
-                ),
-                Text(
-                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
-                  style: AppTypography.title3B,
-                )
-              ],
-            )
-          ],
-        ),
-      );
-    } else if (context.watch<DrivingViewModel>().drivingState ==
-        DrivingState.pause) {
-      return Container(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.main100,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(4),
-          ),
-          border: Border.all(
-            color: AppColor.gray100,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              spacing: 12,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.moon(
-                  color: AppColor.main400,
-                ),
-                Text(
-                  '졸음 운전 감지 중',
-                  style: AppTypography.body2R.copyWith(
-                    color: AppColor.main400,
-                  ),
-                )
-              ],
-            ),
-            AppIcon.defaultCar(color: AppColor.error),
-            Text(
-              textAlign: TextAlign.center,
-              '운전 멈춤',
-              style: AppTypography.title2B.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.error,
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.speed(
-                  width: 36,
-                  height: 36,
-                ),
-                Text(
-                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
-                  style: AppTypography.title3B,
-                )
-              ],
-            )
-          ],
-        ),
-      );
-    } else {
-      return Container(
-        padding: const EdgeInsets.symmetric(vertical: 24),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.error,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(4),
-          ),
-          border: Border.all(
-            color: AppColor.gray100,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          spacing: 8,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              spacing: 12,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.moon(
-                  color: AppColor.error,
-                ),
-                Text(
-                  'Error',
-                  style: AppTypography.body2R.copyWith(
-                    color: AppColor.error,
-                  ),
-                )
-              ],
-            ),
-            AppIcon.defaultCar(color: AppColor.main),
-            Text(
-              textAlign: TextAlign.center,
-              'Error',
-              style: AppTypography.title2B.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.error,
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.speed(
-                  width: 36,
-                  height: 36,
-                ),
-                Text(
-                  "${context.watch<LocationViewModel>().distanceModel!.distance.toStringAsFixed(2)}km",
-                  style: AppTypography.title3B,
-                )
-              ],
-            )
-          ],
-        ),
-      );
+    final drivingState = context.watch<DrivingViewModel>().drivingState;
+    final distance = context
+            .watch<LocationViewModel>()
+            .distanceModel
+            ?.distance
+            .toStringAsFixed(2) ??
+        "0.00";
+
+    Color getBackgroundColor() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return AppColor.gray100;
+        case DrivingState.on:
+        case DrivingState.pause:
+          return AppColor.main100;
+      }
     }
+
+    String getTitle() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return '주행 준비중';
+        case DrivingState.on:
+          return '운전 중';
+        case DrivingState.pause:
+          return '운전 멈춤';
+      }
+    }
+
+    Color getTitleColor() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return AppColor.gray700;
+        case DrivingState.on:
+          return AppColor.main;
+        case DrivingState.pause:
+          return AppColor.error;
+      }
+    }
+
+    String getSubtitle() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return '주행을 준비중입니다';
+        case DrivingState.on:
+        case DrivingState.pause:
+          return '졸음 운전 감지 중';
+      }
+    }
+
+    Color getSubtitleColor() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return AppColor.gray500;
+        case DrivingState.on:
+        case DrivingState.pause:
+          return AppColor.main400;
+      }
+    }
+
+    Color getCarIconColor() {
+      switch (drivingState) {
+        case DrivingState.off:
+          return AppColor.gray700;
+        case DrivingState.on:
+          return AppColor.main;
+        case DrivingState.pause:
+          return AppColor.error;
+      }
+    }
+
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 24.h), // .h 추가
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: getBackgroundColor(),
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.r), // .r 추가
+        ),
+        border: Border.all(
+          color: AppColor.gray100,
+          width: 1.w, // .w 추가
+        ),
+      ),
+      child: Column(
+        spacing: 8.h,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            spacing: 12.w,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppIcon.moon(color: getSubtitleColor()),
+              Text(
+                getSubtitle(),
+                style: AppTypography.body2R.copyWith(
+                  color: getSubtitleColor(),
+                ),
+              ),
+            ],
+          ),
+          AppIcon.defaultCar(color: getCarIconColor()),
+          Text(
+            getTitle(),
+            textAlign: TextAlign.center,
+            style: AppTypography.title2B.copyWith(
+              fontWeight: FontWeight.w600,
+              color: getTitleColor(),
+            ),
+          ),
+          SizedBox(height: 11.h),
+          Row(
+            spacing: 8.w,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppIcon.speed(
+                width: 36.w, // .w 추가
+                height: 36.h, // .h 추가
+              ),
+              Text(
+                "$distance km",
+                style: AppTypography.title3B,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

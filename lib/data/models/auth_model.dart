@@ -1,13 +1,18 @@
-abstract class LoginModel{}
+abstract class LoginModel {}
 
-class LoginRequestModel implements LoginModel{
+class LoginRequestModel implements LoginModel {
   final String accessToken;
+  final String deviceToken;
 
-  LoginRequestModel({required this.accessToken});
+  LoginRequestModel({
+    required this.accessToken,
+    required this.deviceToken,
+  });
 
   Map<String, dynamic> toJson() {
     return {
       'accessToken': accessToken,
+      'deviceToken': deviceToken,
     };
   }
 }
@@ -29,9 +34,9 @@ class LoginResponseModel implements LoginModel {
   }
 }
 
-abstract class SignupModel{}
+abstract class SignupModel {}
 
-class SignupRequestModel implements SignupModel{
+class SignupRequestModel implements SignupModel {
   final String accessToken;
   final String name;
   final String camId;
@@ -54,7 +59,7 @@ class SignupRequestModel implements SignupModel{
   }
 }
 
-class SignupErrorModel implements SignupModel{
+class SignupErrorModel implements SignupModel {
   final String message;
 
   SignupErrorModel({

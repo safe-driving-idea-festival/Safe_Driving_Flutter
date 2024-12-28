@@ -1,7 +1,7 @@
 part of 'signup_page.dart';
 
 class _EmergencyNumber extends StatelessWidget {
-   _EmergencyNumber();
+  _EmergencyNumber();
 
   final _formKey = GlobalKey<FormState>(); // FormKey 선언
 
@@ -9,9 +9,9 @@ class _EmergencyNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 8,
+      spacing: 8.h,
       children: [
-        const Text(
+        Text(
           '연락처',
           style: AppTypography.body2R,
         ),
@@ -45,7 +45,7 @@ class _EmergencyNumber extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             width: double.infinity,
-            height: 50,
+            height: 50.h,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(
                   Radius.circular(4),
@@ -56,7 +56,7 @@ class _EmergencyNumber extends StatelessWidget {
             alignment: Alignment.center,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 10,
+              spacing: 10.w,
               children: [
                 AppIcon.plus(color: AppColor.gray500),
                 Text(
@@ -80,7 +80,7 @@ class _EmergencyNumber extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               width: double.infinity,
-              height: 50,
+              height: 50.h,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(4),
@@ -94,8 +94,8 @@ class _EmergencyNumber extends StatelessWidget {
               ),
             ),
           ),
-          separatorBuilder: (context, value) => const SizedBox(
-            height: 8,
+          separatorBuilder: (context, value) => SizedBox(
+            height: 8.h,
           ),
           itemCount: context.watch<AuthViewModel>().emergencyNumber.length,
         ),

@@ -14,29 +14,39 @@ class _GoogleLoginButton extends StatelessWidget {
         AppIcon.googleLogin(),
         Container(
           decoration: const BoxDecoration(),
-          width: 343,
-          height: 48,
+          width: 343.w,
+          height: 43.h,
           child: Material(
             color: Colors.transparent,
             child: InkWell(
               onTap: () async {
-                await authViewModel.signInWithGoogle().then((result) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    if (result) {
-                      Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (builder) => const MainPage()),
-                        (_) => false,
-                      );
-                    } else if (authViewModel.google != null) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (builder) => SignupPage(),
-                        ),
-                      );
-                    }
-                  });
-                });
+                await authViewModel.signInWithGoogle().then(
+                  (result) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) {
+                        if (result) {
+                          if (context
+                                  .read<AuthViewModel>()
+                                  .loginResponseModel!
+                                  .authority !=
+                              "UNAUTHORIZATION") {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (builder) => const MainPage()),
+                              (_) => false,
+                            );
+                          } else {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (builder) => SignupPage(),
+                              ),
+                            );
+                          }
+                        } else {}
+                      },
+                    );
+                  },
+                );
               },
             ),
           ),

@@ -5,12 +5,19 @@ class _DrivingRecord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileModel = context.watch<ProfileViewModel>().profileModel;
+
+    final hasDrives =
+        profileModel?.driveCount != null && profileModel!.driveCount > 0;
+    final driveCount = hasDrives ? profileModel.driveCount : 0;
+    final displayedDrives = hasDrives ? profileModel.drives : [];
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
+            Text(
               '운전 기록',
               style: AppTypography.title2B,
             ),
@@ -24,12 +31,12 @@ class _DrivingRecord extends StatelessWidget {
                 ),
                 child: Container(
                   alignment: Alignment.center,
-                  width: 71,
-                  height: 34,
+                  width: 71.w,
+                  height: 34.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColor.main),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(4),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4.r),
                     ),
                   ),
                   child: Text(
@@ -43,24 +50,27 @@ class _DrivingRecord extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(
-          height: 16,
-        ),
-        ListView.separated(
-          padding: const EdgeInsets.all(0),
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) => _DriveDetection(
-            driveModel: context.watch<ProfileViewModel>().profileModel!.drives[
-                context.watch<ProfileViewModel>().profileModel!.driveCount -
-                    index -
-                    1],
+        SizedBox(height: 16.h),
+        if (!hasDrives)
+          Center(
+            child: Text(
+              '운전 기록이 없습니다.',
+              style: AppTypography.caption1R,
+            ),
+          )
+        else
+          ListView.separated(
+            padding: const EdgeInsets.all(0),
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int index) => _DriveDetection(
+              driveModel: displayedDrives[driveCount - index - 1],
+            ),
+            separatorBuilder: (BuildContext context, int index) => SizedBox(
+              height: 8.h,
+            ),
+            itemCount: driveCount >= 3 ? 3 : driveCount,
           ),
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(
-            height: 8,
-          ),
-          itemCount: 3,
-        )
       ],
     );
   }

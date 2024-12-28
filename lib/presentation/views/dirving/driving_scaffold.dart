@@ -18,20 +18,18 @@ class _Scaffold extends StatelessWidget {
     return Scaffold(
       appBar: appbar,
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 24,
+        padding: EdgeInsets.symmetric(
+          horizontal: 16.w,
+          vertical: 24.h,
         ),
         child: Column(
           children: [
             drivingInfo,
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             abnormalBehavior,
             const Spacer(),
             stop,
-            const SizedBox(
-              height: 43,
-            )
+            SizedBox(height: 43.h)
           ],
         ),
       ),

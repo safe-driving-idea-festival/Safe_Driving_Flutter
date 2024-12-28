@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:safe_driving/data/models/google_login_model.dart';
 import 'package:safe_driving/data/models/auth_model.dart';
@@ -15,6 +16,7 @@ class AuthViewModel with ChangeNotifier {
 
   GoogleLoginModel? _google;
   LoginResponseModel? _loginResponseModel;
+  String firebaseToken = '';
   String _errorMessage = '';
   final _nameController = TextEditingController();
   final _camIdController = TextEditingController();
@@ -22,18 +24,22 @@ class AuthViewModel with ChangeNotifier {
   final List<String> _emergencyNumber = [];
 
   GoogleLoginModel? get google => _google;
+
   LoginResponseModel? get loginResponseModel => _loginResponseModel;
+
   String get errorMessage => _errorMessage;
+
   TextEditingController get nameController => _nameController;
+
   TextEditingController get camIdController => _camIdController;
+
   TextEditingController get emergencyNumbersController =>
       _emergencyNumbersController;
-  List get emergencyNumber => _emergencyNumber;
 
+  List get emergencyNumber => _emergencyNumber;
 
   Future<bool> signInWithGoogle() async {
     final google = await _googleRepository.signInWithGoogle();
-    print(google!.accesstoken);
     if (google != null) {
       _google = google;
       notifyListeners();
@@ -59,20 +65,21 @@ class AuthViewModel with ChangeNotifier {
   }
 
   Future<bool> _login() async {
+    await _getMyDeviceToken();
     final login = await _authRepository.login(
-      LoginRequestModel(accessToken: _google!.accesstoken),
+      LoginRequestModel(
+          accessToken: _google!.accesstoken, deviceToken: firebaseToken),
     );
-
     if (login != null) {
       _loginResponseModel = login;
-      print(_loginResponseModel!.accessToken);
       notifyListeners();
-      if (login.authority == "UNAUTHORIZATION") {
-        return false;
-      }
       return true;
     }
     return false;
+  }
+
+  Future<void> _getMyDeviceToken() async {
+    firebaseToken = (await FirebaseMessaging.instance.getToken())!;
   }
 
   Future<void> signOut() async {

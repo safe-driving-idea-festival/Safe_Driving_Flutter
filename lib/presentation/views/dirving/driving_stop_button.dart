@@ -7,42 +7,30 @@ class _StopButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonComponent(
       width: double.infinity,
-      height: 48,
+      height: 48.h,
       color: AppColor.main,
-      onTap:
-          context.read<DrivingViewModel>().drivingState == DrivingState.pause
-              ? () {
-                  context.read<DrivingViewModel>().drivingOn(context.read<AuthViewModel>().loginResponseModel!);
-                  context.read<LocationViewModel>().startTracking();
-                }
-              : () => showDialog(
-                    context: context,
-                    builder: (builder) => const _StopModal(),
-                  ),
-      child: context.watch<DrivingViewModel>().drivingState ==
-              DrivingState.pause
-          ? Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.play(color: AppColor.white),
-                Text(
-                  '다시 운전하기',
-                  style: AppTypography.body1R.copyWith(color: AppColor.white),
-                ),
-              ],
-            )
-          : Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon.playDisable(color: AppColor.white),
-                Text(
-                  '잠시 멈추기',
-                  style: AppTypography.body1R.copyWith(color: AppColor.white),
-                ),
-              ],
-            ),
+      onTap: context.read<DrivingViewModel>().drivingState == DrivingState.pause
+          ? () {
+              context
+                  .read<DrivingViewModel>()
+                  .drivingOn(context.read<AuthViewModel>().loginResponseModel!);
+              context.read<LocationViewModel>().startTracking();
+            }
+          : () => showDialog(
+                context: context,
+                builder: (builder) => const _StopModal(),
+              ),
+      child: Row(
+        spacing: 8.w,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AppIcon.playDisable(color: AppColor.white),
+          Text(
+            '멈추기',
+            style: AppTypography.body1R.copyWith(color: AppColor.white),
+          ),
+        ],
+      ),
     );
   }
 }

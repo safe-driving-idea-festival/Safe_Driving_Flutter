@@ -7,41 +7,28 @@ class _AbnormalBehavior extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 7,
+      spacing: 7.h,
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               '발견된 이상행동',
               style: AppTypography.body2B,
             ),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                decoration: const BoxDecoration(),
-                child: Row(
-                  spacing: 4,
-                  children: [
-                    Text(
-                      '더보기',
-                      style: AppTypography.caption2R.copyWith(
-                        fontWeight: FontWeight.w200,
-                        color: AppColor.gray500,
-                      ),
-                    ),
-                    AppIcon.forwardArrow(color: AppColor.gray500)
-                  ],
-                ),
-              ),
-            )
           ],
         ),
-         Wrap(
-          spacing: 7,
-          children: context.watch<AbnormalBehaviorViewModel>().abnormalBehaviorState
-        ),
+         SizedBox(
+           height: 110.h,
+           child: SingleChildScrollView(
+             child: Wrap(
+               runSpacing: 5.h,
+              spacing: 7.w,
+              children: context.watch<AbnormalBehaviorViewModel>().abnormalBehaviorState
+                     ),
+           ),
+         ),
       ],
     );
   }

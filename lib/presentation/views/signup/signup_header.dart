@@ -5,6 +5,6 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('회원가입', style: AppTypography.title2B,);
+    return Text('회원가입', style: AppTypography.title2B,);
   }
 }
