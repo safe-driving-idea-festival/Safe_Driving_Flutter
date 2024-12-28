@@ -13,7 +13,12 @@ class DrivingInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final drivingState = context.watch<DrivingViewModel>().drivingState;
-    final distance = context.watch<LocationViewModel>().distanceModel?.distance.toStringAsFixed(2) ?? "0.00";
+    final distance = context
+            .watch<LocationViewModel>()
+            .distanceModel
+            ?.distance
+            .toStringAsFixed(2) ??
+        "0.00";
 
     Color getBackgroundColor() {
       switch (drivingState) {
@@ -22,8 +27,6 @@ class DrivingInfo extends StatelessWidget {
         case DrivingState.on:
         case DrivingState.pause:
           return AppColor.main100;
-        default:
-          return AppColor.error;
       }
     }
 
@@ -35,8 +38,6 @@ class DrivingInfo extends StatelessWidget {
           return '운전 중';
         case DrivingState.pause:
           return '운전 멈춤';
-        default:
-          return 'Error';
       }
     }
 
@@ -48,8 +49,6 @@ class DrivingInfo extends StatelessWidget {
           return AppColor.main;
         case DrivingState.pause:
           return AppColor.error;
-        default:
-          return AppColor.error;
       }
     }
 
@@ -60,8 +59,6 @@ class DrivingInfo extends StatelessWidget {
         case DrivingState.on:
         case DrivingState.pause:
           return '졸음 운전 감지 중';
-        default:
-          return 'Error';
       }
     }
 
@@ -72,8 +69,6 @@ class DrivingInfo extends StatelessWidget {
         case DrivingState.on:
         case DrivingState.pause:
           return AppColor.main400;
-        default:
-          return AppColor.error;
       }
     }
 
@@ -85,8 +80,6 @@ class DrivingInfo extends StatelessWidget {
           return AppColor.main;
         case DrivingState.pause:
           return AppColor.error;
-        default:
-          return AppColor.main;
       }
     }
 
