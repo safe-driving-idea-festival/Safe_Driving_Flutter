@@ -21,7 +21,6 @@ class DrivingViewModel extends ChangeNotifier {
 
   DriveRepository get driveRepository => _driveRepository;
 
-  DriveStopModel? get driveStopModel => _driveStopModel;
 
   bool get isLoading => _isLoading;
 
@@ -37,14 +36,13 @@ class DrivingViewModel extends ChangeNotifier {
   void drivingOff(LoginResponseModel loginResponseModel) async {
     _isLoading = true;
     notifyListeners();
-    _driveStopModel = await driveRepository.stop(loginResponseModel);
+    await driveRepository.stop(loginResponseModel);
     _drivingState = DrivingState.off;
     _isLoading = false;
     notifyListeners();
   }
 
   void drivingPause() {
-
     _drivingState = DrivingState.pause;
     notifyListeners();
   }
