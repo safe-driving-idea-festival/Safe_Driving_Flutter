@@ -24,7 +24,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
             Options(headers: {'Authorization': loginResponseModel.accessToken}),
       );
       return ProfileModel.fromJson(response.data);
-    } on DioException{
+    } on DioException {
       return null;
     }
   }
