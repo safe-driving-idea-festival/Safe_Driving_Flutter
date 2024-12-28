@@ -55,14 +55,15 @@ class FcmController with ChangeNotifier {
     FirebaseMessaging.onMessage.listen((RemoteMessage rm) {
       _message = rm;
       if (rm.notification?.title == '전방을 주시해주세요!') {
-        _abnormalBehaviorState.addAbnormalBehaviorState(ExitTagComponent());
+        _abnormalBehaviorState
+            .addAbnormalBehaviorState(const ExitTagComponent());
       } else if (rm.notification?.title == "지금 졸려보여요!") {
         _abnormalBehaviorState
-            .addAbnormalBehaviorState(AlmostSleepTagComponent());
+            .addAbnormalBehaviorState(const AlmostSleepTagComponent());
       } else if (rm.notification?.title == "졸음이 감지되었습니다.") {
-        _abnormalBehaviorState.addAbnormalBehaviorState(SleepTagComponent());
+        _abnormalBehaviorState
+            .addAbnormalBehaviorState(const SleepTagComponent());
       }
-      print(rm.notification!.title);
       Get.dialog(Dialog(
         insetPadding: EdgeInsets.all(16.r),
         backgroundColor: Colors.transparent,
@@ -124,14 +125,13 @@ class FcmController with ChangeNotifier {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage rm) {
       _message = rm;
       if (rm.notification?.title == '전방을 주시해주세요!') {
-        _abnormalBehaviorState.addAbnormalBehaviorState(ExitTagComponent());
+        _abnormalBehaviorState.addAbnormalBehaviorState(const ExitTagComponent());
       } else if (rm.notification?.title == "지금 졸려보여요!") {
         _abnormalBehaviorState
-            .addAbnormalBehaviorState(AlmostSleepTagComponent());
+            .addAbnormalBehaviorState(const AlmostSleepTagComponent());
       } else if (rm.notification?.title == "졸음이 감지되었습니다.") {
-        _abnormalBehaviorState.addAbnormalBehaviorState(SleepTagComponent());
+        _abnormalBehaviorState.addAbnormalBehaviorState(const SleepTagComponent());
       }
-      print(rm.notification!.title);
       Get.dialog(Dialog(
         insetPadding: EdgeInsets.all(16.r),
         backgroundColor: Colors.transparent,
