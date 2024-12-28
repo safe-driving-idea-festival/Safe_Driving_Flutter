@@ -7,16 +7,16 @@ class _StopModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, value, child) => Dialog(
-        insetPadding: const EdgeInsets.all(16),
+        insetPadding: EdgeInsets.all(16.r),
         backgroundColor: Colors.transparent,
         child: Container(
-          padding: const EdgeInsets.all(16),
-          height: 219,
-          width: 343,
-          decoration: const BoxDecoration(
+          padding: EdgeInsets.all(16.r),
+          height: 217.h,
+          width: 343.w,
+          decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(
-              Radius.circular(4),
+              Radius.circular(4.r),
             ),
           ),
           child: Column(
@@ -26,21 +26,21 @@ class _StopModal extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     '운전을 멈추겠습니까?',
                     style: AppTypography.title2B,
                   ),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: AppIcon.close(
-                      width: 36,
-                      height: 36,
+                      width: 36.w,
+                      height: 36.h,
                     ),
                   )
                 ],
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -51,63 +51,43 @@ class _StopModal extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
+              ),
+              ButtonComponent(
+                width: double.infinity,
+                height: 43.h,
+                color: AppColor.error,
+                child: Text(
+                  '멈추기',
+                  style: AppTypography.body2B.copyWith(
+                    color: AppColor.white,
+                  ),
+                ),
+                onTap: () {
+                  context.read<LocationViewModel>().stopTracking();
+                  context.read<DrivingViewModel>().drivingOff(
+                      context.read<AuthViewModel>().loginResponseModel!);
+                  Navigator.pop(context);
+                  showDialog(
+                    context: context,
+                    builder: (builder) => const _StopSecondModal(),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 12.h,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 9,
-                children: [
-                  ButtonComponent(
-                    width: 146,
-                    height: 43,
-                    color: AppColor.gray700,
-                    child: Text(
-                      '잠시 멈추기',
-                      style: AppTypography.body2B.copyWith(
-                        color: AppColor.white,
-                      ),
-                    ),
-                    onTap: () {
-                      context.read<LocationViewModel>().stopTracking();
-                      context.read<DrivingViewModel>().drivingPause();
-                      Navigator.pop(context);
-                    },
-                  ),
-                  ButtonComponent(
-                    width: 135,
-                    height: 43,
-                    color: AppColor.error,
-                    child: Text(
-                      '멈추기',
-                      style: AppTypography.body2B.copyWith(
-                        color: AppColor.white,
-                      ),
-                    ),
-                    onTap: () {
-                      context.read<LocationViewModel>().stopTracking();
-                      Navigator.pop(context);
-                      showDialog(
-                        context: context,
-                        builder: (builder) => const _StopSecondModal(),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              const Row(
-                spacing: 8,
+                spacing: 8.w,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 4,
+                    radius: 4.r,
                     backgroundColor: AppColor.gray300,
                   ),
                   CircleAvatar(
-                    radius: 4,
+                    radius: 4.r,
                     backgroundColor: AppColor.gray100,
                   ),
                 ],
@@ -127,28 +107,28 @@ class _StopSecondModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, value, child) => Dialog(
-        insetPadding: const EdgeInsets.all(16),
+        insetPadding: EdgeInsets.all(16.r),
         backgroundColor: Colors.transparent,
         child: Container(
-          padding: const EdgeInsets.all(16),
-          height: 305,
-          width: 343,
-          decoration: const BoxDecoration(
+          padding: EdgeInsets.all(16.r),
+          height: 305.h,
+          width: 343.w,
+          decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.all(
-              Radius.circular(4),
+              Radius.circular(4.r),
             ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 '운정 중 발견된 문제점',
                 style: AppTypography.title2B,
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
               Text(
                 '이번 운전에서 발견된 문제점들',
@@ -156,17 +136,22 @@ class _StopSecondModal extends StatelessWidget {
                   color: AppColor.gray500,
                 ),
               ),
-              const SizedBox(
-                height: 16,
+              SizedBox(
+                height: 16.h,
               ),
-              Wrap(
-                spacing: 4,
-                children: context
-                    .read<AbnormalBehaviorViewModel>()
-                    .abnormalBehaviorState,
+              Container(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Wrap(
+                    spacing: 4.w,
+                    children: context
+                        .watch<AbnormalBehaviorViewModel>()
+                        .abnormalBehaviorState,
+                  ),
+                ),
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
               ),
               Text(
                 "종합 ${context.read<AbnormalBehaviorViewModel>().abnormalBehaviorState.length.toString()}개",
@@ -174,12 +159,12 @@ class _StopSecondModal extends StatelessWidget {
                   color: AppColor.main300,
                 ),
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
               ButtonComponent(
                 width: double.infinity,
-                height: 43,
+                height: 43.h,
                 color: AppColor.main,
                 child: Text(
                   '확인',
@@ -188,26 +173,25 @@ class _StopSecondModal extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  context.read<DrivingViewModel>().drivingOff(context.read<AuthViewModel>().loginResponseModel!);
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (builder) => const MainPage()),
                       (_) => false);
                   context.read<LocationViewModel>().resetDistance();
                 },
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
-              const Row(
-                spacing: 8,
+              Row(
+                spacing: 8.w,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 4,
+                    radius: 4.r,
                     backgroundColor: AppColor.gray100,
                   ),
                   CircleAvatar(
-                    radius: 4,
+                    radius: 4.r,
                     backgroundColor: AppColor.gray300,
                   ),
                 ],
