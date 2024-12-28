@@ -7,11 +7,11 @@ class _Name extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 8,
+      spacing: 8.h,
       children: [
         Row(
           children: [
-            const Text(
+            Text(
               '이름(실명)',
               style: AppTypography.body2R,
             ),
