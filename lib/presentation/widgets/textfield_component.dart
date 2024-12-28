@@ -33,7 +33,7 @@ class TextfieldComponent extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(4.r), // 수정: .r 추가
           ),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: AppColor.gray100,
           ),
         ),
@@ -41,7 +41,7 @@ class TextfieldComponent extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(4.r), // 수정: .r 추가
           ),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: AppColor.gray100,
           ),
         ),
@@ -49,7 +49,7 @@ class TextfieldComponent extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(4.r), // 수정: .r 추가
           ),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: AppColor.black,
           ),
         ),
@@ -57,7 +57,7 @@ class TextfieldComponent extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(4.r), // 수정: .r 추가
           ),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: AppColor.error, // 에러 상태 시 빨간 테두리
           ),
         ),
