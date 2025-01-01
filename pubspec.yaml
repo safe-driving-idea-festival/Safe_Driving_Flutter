@@ -26,7 +26,9 @@ dependencies:
   shared_preferences: ^2.3.4
   just_audio: ^0.9.42
   kakao_flutter_sdk: ^1.9.6
-
+  webview_flutter: ^4.9.0
+  flutter_inappwebview: ^6.1.5
+  google_maps_flutter: ^2.10.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
