@@ -505,8 +505,9 @@ class AppIcon {
   static SvgPicture googleLogin() {
     return SvgPicture.asset(
       'assets/images/google login.svg',
-      width: 343.w,
-      height: 48.h,
+      fit: BoxFit.none,
+      width: 24.w,
+      height: 24.h,
     );
   }
 }
