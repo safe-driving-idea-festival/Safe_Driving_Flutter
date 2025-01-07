@@ -6,13 +6,18 @@ class _StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ButtonComponent(
-      onTap: () async {
-        context.read<DrivingViewModel>().drivingOn(context.read<AuthViewModel>().loginResponseModel!);
+      onTap: () {
+        context
+            .read<DrivingViewModel>()
+            .drivingOn(context.read<AuthViewModel>().loginResponseModel!);
         context.read<AbnormalBehaviorViewModel>().removeAbnormalBehaviorState();
         context.read<LocationViewModel>().startTracking();
-        context.read<FcmController>().initAbnormalBehaviorViewModel(context.read<AbnormalBehaviorViewModel>());
+        context.read<FcmController>().initAbnormalBehaviorViewModel(
+            context.read<AbnormalBehaviorViewModel>());
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (builder) => const DrivingPage()),
+            MaterialPageRoute(
+              builder: (builder) => const DrivingPage(),
+            ),
             (_) => false);
       },
       height: 70.h,

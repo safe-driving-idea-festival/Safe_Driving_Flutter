@@ -14,13 +14,18 @@ import 'package:safe_driving/presentation/widgets/sleep_tag_component.dart';
 
 import '../../viewmodels/driving/driving_view_model.dart';
 import '../../viewmodels/driving/location_view_model.dart';
-import '../../viewmodels/login/login_view_model.dart';
+import '../../viewmodels/login/auth_view_model.dart';
 
 part 'driving_scaffold.dart';
+
 part 'driving_info.dart';
+
 part 'driving_appbar.dart';
+
 part 'driving_abnormal_behavior.dart';
+
 part 'driving_stop_button.dart';
+
 part 'driving_stop_modal.dart';
 
 class DrivingPage extends StatelessWidget {
@@ -29,10 +34,9 @@ class DrivingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const _Scaffold(
-      appbar: _Appbar(),
-      drivingInfo: _DrivingInfo(),
-      abnormalBehavior: _AbnormalBehavior(),
-      stop: _StopButton()
-    );
+        appbar: _Appbar(),
+        drivingInfo: _DrivingInfo(),
+        abnormalBehavior: _AbnormalBehavior(),
+        stop: _StopButton());
   }
 }

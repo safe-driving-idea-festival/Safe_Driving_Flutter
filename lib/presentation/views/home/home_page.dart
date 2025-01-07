@@ -6,7 +6,7 @@ import 'package:safe_driving/core/utils/fonts.dart';
 import 'package:safe_driving/presentation/viewmodels/app/fcm_controller.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/driving_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/location_view_model.dart';
-import 'package:safe_driving/presentation/viewmodels/login/login_view_model.dart';
+import 'package:safe_driving/presentation/viewmodels/login/auth_view_model.dart';
 import 'package:safe_driving/presentation/views/dirving/driving_page.dart';
 import 'package:safe_driving/presentation/widgets/button_components.dart';
 import 'package:safe_driving/presentation/widgets/driving_info_component.dart';

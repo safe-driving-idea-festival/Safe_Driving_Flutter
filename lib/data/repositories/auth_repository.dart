@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,6 +21,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<LoginResponseModel?> login(
       LoginRequestModel? loginRequestModel) async {
+    log(loginRequestModel!.deviceToken);
     try {
       final response = await _dio.post(
         '/user/login',

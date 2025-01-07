@@ -11,14 +11,43 @@ class _GoogleLoginButton extends StatelessWidget {
       alignment: Alignment.center,
       clipBehavior: Clip.none,
       children: [
-        AppIcon.googleLogin(),
         Container(
-          decoration: const BoxDecoration(),
+          height: 48.h,
           width: 343.w,
-          height: 43.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(4.r),
+            ),
+            border: Border.all(
+              color: Color(0xffe9e9e9),
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 30.w,
+              vertical: 12.h,
+            ),
+            child: Row(
+              spacing: 50.w,
+              children: [
+                AppIcon.googleLogin(),
+                const Text(
+                  'Google 계정으로 로그인',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          width: 343.w,
+          height: 48.h,
           child: Material(
             color: Colors.transparent,
             child: InkWell(
+              borderRadius: BorderRadius.all(
+                Radius.circular(4.r),
+              ),
               onTap: () async {
                 await authViewModel.signInWithGoogle().then(
                   (result) {

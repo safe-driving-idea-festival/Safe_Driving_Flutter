@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safe_driving/presentation/viewmodels/app/fcm_controller.dart';
-import 'package:safe_driving/presentation/viewmodels/login/login_view_model.dart';
+import 'package:safe_driving/presentation/viewmodels/login/auth_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/profile/profile_view_model.dart';
 import '../../../core/utils/colors.dart';
 import '../../../core/utils/icons.dart';

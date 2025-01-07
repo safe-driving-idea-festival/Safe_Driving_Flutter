@@ -14,13 +14,15 @@ class _Scaffold extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.fromLTRB(16.0.w, 70.h, 16.w, 0.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 36.h,
-          children: [
-            profile,
-            drivingRecord,
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 36.h,
+            children: [
+              profile,
+              drivingRecord,
+            ],
+          ),
         ),
       ),
     );

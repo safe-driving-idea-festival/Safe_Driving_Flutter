@@ -11,7 +11,7 @@ class _StopModal extends StatelessWidget {
         backgroundColor: Colors.transparent,
         child: Container(
           padding: EdgeInsets.all(16.r),
-          height: 217.h,
+          height: 220.h,
           width: 343.w,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -51,9 +51,7 @@ class _StopModal extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 40.h,
-              ),
+              Spacer(),
               ButtonComponent(
                 width: double.infinity,
                 height: 43.h,
@@ -157,9 +155,7 @@ class _StopSecondModal extends StatelessWidget {
                   color: AppColor.main300,
                 ),
               ),
-              SizedBox(
-                height: 12.h,
-              ),
+              Spacer(),
               ButtonComponent(
                 width: double.infinity,
                 height: 43.h,
@@ -171,10 +167,10 @@ class _StopSecondModal extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
+                  context.read<LocationViewModel>().resetDistance();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (builder) => const MainPage()),
                       (_) => false);
-                  context.read<LocationViewModel>().resetDistance();
                 },
               ),
               SizedBox(

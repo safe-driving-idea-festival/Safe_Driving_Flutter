@@ -5,7 +5,7 @@ import 'package:safe_driving/presentation/views/signup/signup_page.dart';
 
 
 import '../../../core/utils/icons.dart';
-import '../../viewmodels/login/login_view_model.dart';
+import '../../viewmodels/login/auth_view_model.dart';
 import '../main/main_page.dart';
 
 part 'login_scaffold.dart';
