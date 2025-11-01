@@ -1,7 +1,5 @@
 # 📱 안전 운전 🚀
 
-혁신적인 모바일 애플리케이션으로 도로 안전을 한 단계 더 높이세요.
-**운전 안전의 새로운 기준, 더 나은 미래를 위해.**
 
 ![License](https://img.shields.io/github/license/safe-driving-idea-festival/Safe_Driving_Flutter)
 ![GitHub stars](https://img.shields.io/github/stars/safe-driving-idea-festival/Safe_Driving_Flutter?style=social)
