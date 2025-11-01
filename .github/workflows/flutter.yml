@@ -62,7 +62,7 @@ jobs:
             {
               "embeds": [
                 {
-                  "title": "CI 성공이노 :)",
+                  "title": "CI 성공 :)",
                   "description": "** COMMIT MESSAGE **\n> [${{ github.event.head_commit.message }}](${{ github.event.head_commit.url }})\n",
                   "color": 46335,
                   "timestamp": "${{ env.TIMESTAMP }}",
@@ -77,10 +77,6 @@ jobs:
                   },
                   "image": {
                     "url": "${{ secrets.SUCCESS_FLUTTER_IMAGE }}"
-                  },
-                  "footer": {
-                    "text": "ㅎㅎ",
-                    "icon_url": "https://steamuserimages-a.akamaihd.net/ugc/809998067550420747/A4B8A0FDB2C3A688FC556B47162698B94F038324/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                   },
                   "fields": [
                     {
@@ -115,7 +111,7 @@ jobs:
             {
               "embeds": [
                 {
-                  "title": "CI 실패했노 :(",
+                  "title": "CI 실패 :(",
                   "description": "** COMMIT MESSAGE **\n> [${{ github.event.head_commit.message }}](${{ github.event.head_commit.url }})\n",
                   "color": 16711680,
                   "timestamp": "${{ env.TIMESTAMP }}",
@@ -130,10 +126,6 @@ jobs:
                   },
                   "image": {
                     "url": "${{ secrets.FAIL_FLUTTER_IMAGE }}"
-                  },
-                  "footer": {
-                    "text": "ㅠㅠ",
-                    "icon_url": "https://steamuserimages-a.akamaihd.net/ugc/809998067550420747/A4B8A0FDB2C3A688FC556B47162698B94F038324/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true"
                   },
                   "fields": [
                     {
