@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/kakao_map_view_model.dart';
 import 'package:safe_driving/presentation/viewmodels/driving/location_view_model.dart';
 import 'package:safe_driving/presentation/widgets/google_map.dart';
-
 import '../../../core/utils/colors.dart';
 import '../../../core/utils/fonts.dart';
 import '../../widgets/almost_sleep_tag_component.dart';
@@ -21,8 +20,28 @@ import '../../widgets/exit_tag_component.dart';
 import '../../widgets/sleep_tag_component.dart';
 import '../driving/abnormal_behavior_view_model.dart';
 
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 class FcmController with ChangeNotifier {
-  FcmController();
+  FcmController._();
+
+  static FcmController instance = FcmController._();
+
+  factory FcmController() => instance;
+
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  Future<void> initLocalNotification() async {
+    const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const iosInit = DarwinInitializationSettings();
+    const initSettings = InitializationSettings(
+      android: androidInit,
+      iOS: iosInit,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(initSettings);
+  }
 
   final player1 = AudioPlayer();
   final player2 = AudioPlayer();
@@ -92,6 +111,7 @@ class FcmController with ChangeNotifier {
   // Firebase 초기화 및 메시징 설정
   Future<void> initialize() async {
     await Firebase.initializeApp();
+    await initLocalNotification(); // 추가
     await FirebaseMessaging.instance.requestPermission();
 
     FirebaseMessaging.onMessage.listen((RemoteMessage rm) async {
@@ -99,7 +119,13 @@ class FcmController with ChangeNotifier {
       _message = rm;
       await _handleNotification(rm);
     });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((rm) {
+      _message = rm;
+      _handleNotification(rm);
+    });
   }
+
 }
 
 class _NotificationModal extends StatefulWidget {

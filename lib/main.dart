@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -25,14 +26,19 @@ import 'core/utils/colors.dart';
 import 'data/repositories/google_login_repository.dart';
 import 'data/repositories/location_repository.dart';
 
-
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  _showLocalNotification(message);
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoogleSignIn().signOut();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await dotenv.load(fileName: '.env');
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   KakaoSdk.init(
       nativeAppKey: 'f2a6b050dbb322338ab249d4a0684623',
       javaScriptAppKey: '26daff8e9488b846ccbede1d0b65fd6a');
@@ -103,4 +109,32 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+final FlutterLocalNotificationsPlugin _localNoti =
+    FlutterLocalNotificationsPlugin();
+
+@pragma('vm:entry-point')
+Future<void> _showLocalNotification(RemoteMessage message) async {
+  const android = AndroidNotificationDetails(
+    'background_channel',
+    '백그라운드 알림',
+    importance: Importance.max,
+    priority: Priority.high,
+    playSound: true, // ← 여기서 사운드 재생 가능
+    sound: RawResourceAndroidNotificationSound('sleeping'),
+  );
+
+  const ios = DarwinNotificationDetails(
+    presentSound: true,
+  );
+
+  const details = NotificationDetails(android: android, iOS: ios);
+
+  await _localNoti.show(
+    message.hashCode,
+    message.notification?.title ?? '',
+    message.notification?.body ?? '',
+    details,
+  );
 }
